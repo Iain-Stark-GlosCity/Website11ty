@@ -138,8 +138,5 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
-# Eleventy output (committed to main by the action, ignored locally)
-_site/
-
 # Staged pages (generated at build time from /build/)
 src/pages/
