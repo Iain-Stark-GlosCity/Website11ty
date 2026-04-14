@@ -89,6 +89,7 @@ module.exports = function (eleventyConfig) {
 
   // ── Input / output ─────────────────────────────────────────────────
   return {
+    pathPrefix: process.env.PATHPREFIX || "/",
     dir: {
       input: "src",
       output: "_site",

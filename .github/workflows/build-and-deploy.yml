@@ -24,6 +24,8 @@ jobs:
 
       - name: Build site
         run: npm run build
+        env:
+          PATHPREFIX: /${{ github.event.repository.name }}/
 
       - name: Commit _site back to main
         run: |

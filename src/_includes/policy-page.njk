@@ -61,7 +61,7 @@
       <nav role="navigation">
         <ul class="govuk-list govuk-!-font-size-16">
           {% for page in related_pages %}
-            <li><a class="govuk-link" href="{{ page }}">{{ page | readable }}</a></li>
+            <li><a class="govuk-link" href="{{ page | url }}">{{ page | readable }}</a></li>
           {% endfor %}
         </ul>
       </nav>
