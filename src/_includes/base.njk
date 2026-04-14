@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{% if title %}{{ title }} — Gloucester City Council{% else %}Gloucester City Council{% endif %}</title>
-    <link rel="stylesheet" href="/assets/govuk-frontend.min.css">
-    <link rel="stylesheet" href="/assets/site.css">
+    <link rel="stylesheet" href="{{ "/assets/govuk-frontend.min.css" | url }}">
+    <link rel="stylesheet" href="{{ "/assets/site.css" | url }}">
     {% block head %}{% endblock %}
   </head>
   <body class="govuk-template__body">
@@ -17,7 +17,7 @@
     <header class="govuk-header" role="banner" data-module="govuk-header">
       <div class="govuk-header__container govuk-width-container">
         <div class="govuk-header__logo">
-          <a href="/" class="govuk-header__link govuk-header__link--homepage">
+          <a href="{{ "/" | url }}" class="govuk-header__link govuk-header__link--homepage">
             <span class="govuk-header__logotype">
               <span class="govuk-header__logotype-text">Gloucester City Council</span>
             </span>
@@ -49,7 +49,7 @@
           <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
             <ul class="govuk-footer__inline-list">
               <li class="govuk-footer__inline-list-item">
-                <a class="govuk-footer__link" href="/accessibility-statement/">Accessibility statement</a>
+                <a class="govuk-footer__link" href="{{ "/accessibility-statement/" | url }}">Accessibility statement</a>
               </li>
             </ul>
             <span class="govuk-footer__licence-description">
