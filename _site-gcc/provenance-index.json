@@ -1,6 +1,6 @@
 {
   "schema_version": "2",
-  "generated_at": "2026-04-14T16:47:56.826Z",
+  "generated_at": "2026-04-14T21:59:53.888Z",
   "site_url": "https://www.gloucester.gov.uk",
   "packs": {
     "ctax": {
@@ -14,6 +14,15 @@
               "pages": [
                 {
                   "url": "/council-tax/discounts/disabled/",
+                  "role": "primary"
+                }
+              ]
+            },
+            "/adjustment_catalogue/empty_property/items/vacant_unfurnished": {
+              "hash_at_generation": "sha256:e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2",
+              "pages": [
+                {
+                  "url": "/council-tax-2/empty-home/",
                   "role": "primary"
                 }
               ]
@@ -32,6 +41,15 @@
               "pages": [
                 {
                   "url": "/council-tax/discounts/mental-impairment/",
+                  "role": "primary"
+                }
+              ]
+            },
+            "/adjustment_catalogue/premiums_and_discounts/items/second_home": {
+              "hash_at_generation": "sha256:f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3",
+              "pages": [
+                {
+                  "url": "/council-tax-2/second-home/",
                   "role": "primary"
                 }
               ]
@@ -72,6 +90,10 @@
               "hash_at_generation": "sha256:f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3",
               "pages": [
                 {
+                  "url": "/council-tax-2/empty-home/",
+                  "role": "implementing_logic"
+                },
+                {
                   "url": "/council-tax/discounts/empty-properties/",
                   "role": "implementing_logic"
                 }
@@ -82,6 +104,15 @@
               "pages": [
                 {
                   "url": "/council-tax/discounts/mental-impairment/",
+                  "role": "implementing_logic"
+                }
+              ]
+            },
+            "/executable_rule_slices/rules[rule_id=rule.premium.second_home]": {
+              "hash_at_generation": "sha256:a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5",
+              "pages": [
+                {
+                  "url": "/council-tax-2/second-home/",
                   "role": "implementing_logic"
                 }
               ]
@@ -140,7 +171,15 @@
               "hash_at_generation": "sha256:a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2",
               "pages": [
                 {
+                  "url": "/council-tax-2/empty-home/",
+                  "role": "vocabulary"
+                },
+                {
                   "url": "/council-tax/discounts/empty-properties/",
+                  "role": "vocabulary"
+                },
+                {
+                  "url": "/council-tax-2/second-home/",
                   "role": "vocabulary"
                 }
               ]
@@ -186,11 +225,24 @@
                 }
               ]
             },
+            "/publication_control/section_statuses/empty_property": {
+              "hash_at_generation": "sha256:c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0",
+              "pages": [
+                {
+                  "url": "/council-tax-2/empty-home/",
+                  "role": "publication_state"
+                }
+              ]
+            },
             "/publication_control/section_statuses/premiums_and_discounts": {
               "hash_at_generation": "sha256:c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0",
               "pages": [
                 {
                   "url": "/council-tax/discounts/empty-properties/",
+                  "role": "publication_state"
+                },
+                {
+                  "url": "/council-tax-2/second-home/",
                   "role": "publication_state"
                 }
               ]
