@@ -103,9 +103,10 @@ tags:
 related_pages:
   - /council-tax/discounts/
   - /council-tax/discounts/students/
+  - /council-tax/discounts/disabled/
+  - /council-tax/discounts/mental-impairment/
+  - /council-tax/discounts/empty-properties/
   - /council-tax/council-tax-support/
-  - /council-tax/pay/
-  - /council-tax/changes/
 ---
 
 <!-- provenance: ctax/facts@2.4.0+2.2:/adjustment_catalogue/discounts/items/0#eligibility#8311bd27 -->

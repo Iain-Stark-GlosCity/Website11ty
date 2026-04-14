@@ -20,11 +20,11 @@ actions:
 
 stats:
   - value: "25%"
-    label: off for one adult
-  - value: "50%"
-    label: off for some disabilities
+    label: off for one adult (Single Person Discount)
   - value: "100%"
-    label: exempt if all students
+    label: exempt if all residents are students
+  - value: "200%"
+    label: premium on long-term empty properties
 
 cards_heading: Types of discount
 
