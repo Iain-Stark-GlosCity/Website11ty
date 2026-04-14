@@ -2,23 +2,23 @@
 
 {% block head %}
 {% if provenance %}
-  <meta name="provenance:pack:id" content="{{ provenance.pack.id }}">
-  <meta name="provenance:pack:version" content="{{ provenance.pack.version }}">
+  <meta name="provenance:pack:id"        content="{{ provenance.pack.id }}">
+  <meta name="provenance:pack:version"   content="{{ provenance.pack.version }}">
   <meta name="provenance:pack:authority" content="{{ provenance.pack.authority }}">
   {% for s in provenance.sources %}
-    <meta name="provenance:source:{{ loop.index0 }}:id" content="{{ s.id }}">
-    <meta name="provenance:source:{{ loop.index0 }}:role" content="{{ s.role }}">
+    <meta name="provenance:source:{{ loop.index0 }}:id"       content="{{ s.id }}">
+    <meta name="provenance:source:{{ loop.index0 }}:role"     content="{{ s.role }}">
     <meta name="provenance:source:{{ loop.index0 }}:document" content="{{ s.document }}">
-    <meta name="provenance:source:{{ loop.index0 }}:hash" content="{{ s.hash }}">
+    <meta name="provenance:source:{{ loop.index0 }}:hash"     content="{{ s.hash }}">
   {% endfor %}
-  <meta name="provenance:publication:can-publish" content="{{ publication_gates.can_publish }}">
-  <meta name="provenance:publication:pack-status" content="{{ publication_gates.pack_status }}">
-  <meta name="provenance:publication:section-status" content="{{ publication_gates.section_status }}">
-  <meta name="provenance:generated-at" content="{{ provenance.generated_at | isoDate }}">
-  <meta name="provenance:generator" content="{{ provenance.generator }}">
+  <meta name="provenance:publication:can-publish"     content="{{ publication_gates.can_publish }}">
+  <meta name="provenance:publication:pack-status"     content="{{ publication_gates.pack_status }}">
+  <meta name="provenance:publication:section-status"  content="{{ publication_gates.section_status }}">
+  <meta name="provenance:generated-at"  content="{{ provenance.generated_at | isoDate }}">
+  <meta name="provenance:generator"     content="{{ provenance.generator }}">
   <meta name="provenance_format_version" content="{{ provenance_format_version }}">
   {% for s in provenance.sources %}
-    <link rel="source:{{ s.role | replace('_', '-') }}"
+    <link rel="source:{{ s.role | replace('_','-') }}"
           type="application/json"
           href="{{ provenance.pack.mcp_endpoint }}?document={{ s.document }}&path={{ s.path | urlencode }}">
   {% endfor %}
@@ -26,31 +26,54 @@
 {% endblock %}
 
 {% block content %}
-<div class="gcc-page-hero">
+
+{# ── Page header ── #}
+<div class="gcc-page-header">
   <div class="gcc-container">
     {% if breadcrumb %}
-      <ol class="gcc-breadcrumb">
-        {% for crumb in breadcrumb %}
-          <li><a href="{{ crumb.url | url }}">{{ crumb.label }}</a></li>
-        {% endfor %}
-      </ol>
+      <nav aria-label="Breadcrumb">
+        <ol class="gcc-breadcrumb">
+          {% for crumb in breadcrumb %}
+            <li>
+              {% if not loop.last %}
+                <a href="{{ crumb.url | url }}">{{ crumb.label }}</a>
+              {% else %}
+                {{ crumb.label }}
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ol>
+      </nav>
     {% endif %}
-    {% if eyebrow %}<span class="gcc-page-hero__eyebrow">{{ eyebrow }}</span>{% endif %}
-    <h1 class="gcc-page-hero__heading">{{ title }}</h1>
-    {% if summary %}<p class="gcc-page-hero__lede">{{ summary }}</p>{% endif %}
+    <div class="gcc-page-header__inner">
+      <div>
+        {% if eyebrow %}<span class="gcc-eyebrow">{{ eyebrow }}</span>{% endif %}
+        <h1 class="gcc-page-header__title">{{ title }}</h1>
+        {% if summary %}<p class="gcc-lead">{{ summary }}</p>{% endif %}
+      </div>
+      {% if key_badge %}
+        <div class="gcc-key-badge" aria-label="{{ key_badge.label }}">
+          <span class="gcc-key-badge__value">{{ key_badge.value }}</span>
+          <span class="gcc-key-badge__label">{{ key_badge.label }}</span>
+        </div>
+      {% endif %}
+    </div>
   </div>
 </div>
 
+{# ── Body ── #}
 <div class="gcc-container">
   <div class="gcc-page-layout">
 
-    <div>
+    {# ── Main column ── #}
+    <article class="gcc-page-layout__main">
+
       {% if publication_gates and publication_gates.section_status != "current" %}
-        <div class="gcc-status-banner--review" role="note">
+        <div class="gcc-notice gcc-notice--review" role="note">
           <p>
             This page is currently in
-            <strong>{{ publication_gates.section_status }}</strong> —
-            content is accurate but may be subject to final sign-off.
+            <strong>{{ publication_gates.section_status }}</strong>
+            — content is accurate but may be subject to final sign-off.
           </p>
         </div>
       {% endif %}
@@ -58,22 +81,33 @@
       <div class="gcc-prose">
         {{ content | safe }}
       </div>
-    </div>
 
-    {% if related_pages and (related_pages | length) %}
-      <aside class="gcc-related-card" role="complementary">
-        <h2 class="gcc-related-card__heading">Related</h2>
-        <ul>
-          {% for page in related_pages %}
-            <li><a href="{{ page | url }}">{{ page | readable }}</a></li>
-          {% endfor %}
-        </ul>
-      </aside>
-    {% endif %}
+    </article>
+
+    {# ── Sidebar ── #}
+    <aside class="gcc-page-layout__sidebar" aria-label="Related information">
+
+      {% if related_pages and (related_pages | length) %}
+        <div class="gcc-sidebar-card">
+          <div class="gcc-sidebar-card__header">
+            <h2 class="gcc-sidebar-card__heading">Related pages</h2>
+          </div>
+          <div class="gcc-sidebar-card__body">
+            <ul class="gcc-related-list" role="list">
+              {% for page in related_pages %}
+                <li><a href="{{ page | url }}">{{ page | readable }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endif %}
+
+    </aside>
 
   </div>
 </div>
 
+{# ── Provenance strip ── #}
 {% if provenance %}
 <section class="gcc-provenance-strip" aria-label="Page provenance">
   <div class="gcc-container">
@@ -82,11 +116,10 @@
       <div class="gcc-provenance-strip__body">
         <div class="gcc-provenance-strip__pack">
           <p>
-            This page was generated automatically from
+            Generated automatically from
             <strong>{{ provenance.pack.authority }}</strong>'s
             <strong>{{ provenance.pack.id }}</strong> schema pack
-            (version {{ provenance.pack.version }}).
-            The content draws from the following sources:
+            (v{{ provenance.pack.version }}).
           </p>
         </div>
         <table>
@@ -100,7 +133,7 @@
           <tbody>
             {% for s in provenance.sources %}
               <tr>
-                <td>{{ s.role | replace("_", " ") | capitalize }}</td>
+                <td>{{ s.role | replace("_"," ") | capitalize }}</td>
                 <td>
                   <code>{{ s.document }}</code><br>
                   <code>{{ s.path }}</code>
@@ -120,4 +153,5 @@
   </div>
 </section>
 {% endif %}
+
 {% endblock %}

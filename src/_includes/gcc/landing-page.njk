@@ -1,24 +1,79 @@
 {% extends "gcc/base.njk" %}
 
 {% block content %}
-<div class="gcc-landing-hero">
-  <div class="gcc-container">
-    {% if eyebrow %}<span class="gcc-page-hero__eyebrow">{{ eyebrow }}</span>{% endif %}
-    <h1 class="gcc-page-hero__heading">{{ title }}</h1>
-    {% if summary %}<p class="gcc-page-hero__lede">{{ summary }}</p>{% endif %}
-  </div>
-</div>
 
-<div class="gcc-container">
-  {% if cards and (cards | length) %}
+{# ── Hero ── #}
+<section class="gcc-hero" aria-labelledby="hero-heading">
+  <div class="gcc-container">
+    <div class="gcc-hero__inner">
+      <div class="gcc-hero__content">
+        {% if eyebrow %}
+          <span class="gcc-hero__eyebrow">{{ eyebrow }}</span>
+        {% endif %}
+        <h1 id="hero-heading" class="gcc-hero__heading">{{ title }}</h1>
+        {% if summary %}
+          <p class="gcc-hero__lede">{{ summary }}</p>
+        {% endif %}
+        {% if actions and (actions | length) %}
+          <div class="gcc-hero__actions">
+            {% for action in actions %}
+              <a href="{{ action.href | url }}"
+                 class="gcc-btn{% if loop.first %} gcc-btn--white gcc-btn--lg{% else %} gcc-btn--ghost gcc-btn--lg{% endif %}">
+                {{ action.label }}
+              </a>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      {% if stats and (stats | length) %}
+        <div class="gcc-hero__stats" aria-label="Key figures">
+          {% for stat in stats %}
+            <div class="gcc-stat">
+              <span class="gcc-stat__value">{{ stat.value }}</span>
+              <span class="gcc-stat__label">{{ stat.label }}</span>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{# ── Service cards ── #}
+{% if cards and (cards | length) %}
+<section class="gcc-services" aria-labelledby="services-heading">
+  <div class="gcc-container">
+    {% if cards_heading %}
+      <h2 id="services-heading" class="gcc-services__heading">{{ cards_heading }}</h2>
+    {% endif %}
     <div class="gcc-card-grid">
       {% for card in cards %}
         <a href="{{ card.href | url }}" class="gcc-card">
-          <p class="gcc-card__title">{{ card.title }}</p>
-          {% if card.summary %}<p class="gcc-card__summary">{{ card.summary }}</p>{% endif %}
+          <div class="gcc-card__body">
+            <h3 class="gcc-card__title">{{ card.title }}</h3>
+            {% if card.summary %}
+              <p class="gcc-card__summary">{{ card.summary }}</p>
+            {% endif %}
+          </div>
+          <span class="gcc-card__footer" aria-hidden="true">
+            Find out more
+            <span class="gcc-card__footer-arrow">→</span>
+          </span>
         </a>
       {% endfor %}
     </div>
-  {% endif %}
-</div>
+  </div>
+</section>
+{% endif %}
+
+{# ── Optional prose content ── #}
+{% if content %}
+<section class="gcc-landing-content">
+  <div class="gcc-container">
+    <div class="gcc-prose">{{ content | safe }}</div>
+  </div>
+</section>
+{% endif %}
+
 {% endblock %}

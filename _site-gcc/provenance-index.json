@@ -1,6 +1,6 @@
 {
   "schema_version": "2",
-  "generated_at": "2026-04-14T14:09:02.188Z",
+  "generated_at": "2026-04-14T14:40:02.884Z",
   "site_url": "https://www.gloucester.gov.uk",
   "packs": {
     "ctax": {
@@ -29,29 +29,6 @@
                 {
                   "url": "/council-tax/discounts/single-person/",
                   "role": "implementing_logic"
-                }
-              ]
-            },
-            "/rule_sets/adjustment_rules[rule_id=full-time-students]": {
-              "hash_at_generation": "sha256:b2c3d4e5f67890abcdef1234567890abcdef1234567890abcdef1234567890ab",
-              "pages": [
-                {
-                  "url": "/council-tax/discounts/single-person/",
-                  "role": "cross_reference"
-                }
-              ]
-            }
-          }
-        },
-        "taxonomy": {
-          "version": "2.2",
-          "records": {
-            "/mechanisms[id=discount]": {
-              "hash_at_generation": "sha256:e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6",
-              "pages": [
-                {
-                  "url": "/council-tax/discounts/single-person/",
-                  "role": "vocabulary"
                 }
               ]
             }

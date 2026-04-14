@@ -6,8 +6,8 @@
     "prebuild": "node scripts/stage-build.js",
     "build": "eleventy",
     "postbuild": "node scripts/patch-css.js",
-    "prebuild:gcc": "node scripts/stage-build.js",
-    "build:gcc": "GCC_TEMPLATE=true SITE_OUTPUT=_site-gcc eleventy",
+    "prebuild:gcc": "node scripts/stage-build-gcc.js",
+    "build:gcc": "SITE_OUTPUT=_site-gcc eleventy",
     "serve": "eleventy --serve"
   },
   "devDependencies": {

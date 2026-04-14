@@ -1,37 +1,100 @@
 {% extends "gcc/base.njk" %}
 
 {% block content %}
-<div class="gcc-page-hero">
+
+<div class="gcc-page-header">
   <div class="gcc-container">
-    {% if eyebrow %}<span class="gcc-page-hero__eyebrow">{{ eyebrow }}</span>{% endif %}
-    <h1 class="gcc-page-hero__heading">{{ title }}</h1>
-    {% if summary %}<p class="gcc-page-hero__lede">{{ summary }}</p>{% endif %}
-  </div>
-</div>
-
-<div class="gcc-container">
-  <div class="gcc-page-layout">
-
-    <div class="gcc-prose gcc-prose--wide">
-      {{ content | safe }}
-    </div>
-
-    {% if steps and (steps | length) %}
-      <nav aria-label="Guide steps">
-        <ol class="gcc-steps-nav">
-          {% for step in steps %}
-            <li{% if step_number == loop.index %} class="current"{% endif %}>
-              {% if step_number == loop.index %}
-                {{ step.title }}
+    {% if breadcrumb %}
+      <nav aria-label="Breadcrumb">
+        <ol class="gcc-breadcrumb">
+          {% for crumb in breadcrumb %}
+            <li>
+              {% if not loop.last %}
+                <a href="{{ crumb.url | url }}">{{ crumb.label }}</a>
               {% else %}
-                <a href="{{ step.href | url }}">{{ step.title }}</a>
+                {{ crumb.label }}
               {% endif %}
             </li>
           {% endfor %}
         </ol>
       </nav>
     {% endif %}
+    {% if eyebrow %}<span class="gcc-eyebrow">{{ eyebrow }}</span>{% endif %}
+    <h1 class="gcc-page-header__title">{{ title }}</h1>
+    {% if summary %}<p class="gcc-lead">{{ summary }}</p>{% endif %}
+  </div>
+</div>
+
+{# ── Step progress bar ── #}
+{% if steps and (steps | length) %}
+<div class="gcc-guide-progress" aria-label="Guide progress">
+  <div class="gcc-container">
+    <ol class="gcc-guide-progress__list" role="list">
+      {% for step in steps %}
+        <li class="gcc-guide-progress__step{% if step_number == loop.index %} is-current{% elif step_number > loop.index %} is-done{% endif %}"
+            aria-current="{% if step_number == loop.index %}step{% else %}false{% endif %}">
+          <span class="gcc-guide-progress__num" aria-hidden="true">
+            {% if step_number > loop.index %}✓{% else %}{{ loop.index }}{% endif %}
+          </span>
+          <span class="gcc-guide-progress__label">{{ step.title }}</span>
+        </li>
+      {% endfor %}
+    </ol>
+  </div>
+</div>
+{% endif %}
+
+<div class="gcc-container">
+  <div class="gcc-guide-layout">
+
+    {# ── Main content ── #}
+    <div>
+      <div class="gcc-prose gcc-prose--wide">
+        {{ content | safe }}
+      </div>
+
+      {# ── Prev/Next navigation ── #}
+      {% if steps and (steps | length) %}
+        <nav class="gcc-guide-nav" aria-label="Guide navigation">
+          {% if step_number and step_number > 1 %}
+            <a href="{{ steps[step_number - 2].href | url }}" class="gcc-btn gcc-btn--outline">
+              ← {{ steps[step_number - 2].title }}
+            </a>
+          {% endif %}
+          {% if step_number and step_number < (steps | length) %}
+            <a href="{{ steps[step_number].href | url }}" class="gcc-btn gcc-btn--primary" style="margin-left: auto;">
+              {{ steps[step_number].title }} →
+            </a>
+          {% endif %}
+        </nav>
+      {% endif %}
+    </div>
+
+    {# ── Steps sidebar ── #}
+    {% if steps and (steps | length) %}
+      <nav aria-label="Steps in this guide">
+        <div class="gcc-sidebar-card">
+          <div class="gcc-sidebar-card__header">
+            <h2 class="gcc-sidebar-card__heading">Steps in this guide</h2>
+          </div>
+          <div class="gcc-sidebar-card__body">
+            <ol class="gcc-steps-list" role="list">
+              {% for step in steps %}
+                <li class="gcc-steps-list__item{% if step_number == loop.index %} is-current{% elif step_number > loop.index %} is-done{% endif %}">
+                  {% if step_number == loop.index %}
+                    <span>{{ step.title }}</span>
+                  {% else %}
+                    <a href="{{ step.href | url }}">{{ step.title }}</a>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ol>
+          </div>
+        </div>
+      </nav>
+    {% endif %}
 
   </div>
 </div>
+
 {% endblock %}
