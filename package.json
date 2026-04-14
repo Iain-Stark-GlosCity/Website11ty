@@ -5,6 +5,7 @@
   "scripts": {
     "prebuild": "node scripts/stage-build.js",
     "build": "eleventy",
+    "postbuild": "node scripts/patch-css.js",
     "serve": "eleventy --serve"
   },
   "devDependencies": {

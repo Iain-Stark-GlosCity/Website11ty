@@ -16,7 +16,8 @@ module.exports = function (eleventyConfig) {
       "assets/govuk-frontend.min.css",
   });
   eleventyConfig.addPassthroughCopy({
-    "node_modules/govuk-frontend/dist/govuk/assets": "assets/govuk",
+    "node_modules/govuk-frontend/dist/govuk/assets/fonts": "assets/fonts",
+    "node_modules/govuk-frontend/dist/govuk/assets/images": "assets/images",
   });
   eleventyConfig.addPassthroughCopy("src/assets");
 
