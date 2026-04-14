@@ -1,0 +1,37 @@
+{% extends "gcc/base.njk" %}
+
+{% block content %}
+<div class="gcc-page-hero">
+  <div class="gcc-container">
+    {% if eyebrow %}<span class="gcc-page-hero__eyebrow">{{ eyebrow }}</span>{% endif %}
+    <h1 class="gcc-page-hero__heading">{{ title }}</h1>
+    {% if summary %}<p class="gcc-page-hero__lede">{{ summary }}</p>{% endif %}
+  </div>
+</div>
+
+<div class="gcc-container">
+  <div class="gcc-page-layout">
+
+    <div class="gcc-prose gcc-prose--wide">
+      {{ content | safe }}
+    </div>
+
+    {% if steps and (steps | length) %}
+      <nav aria-label="Guide steps">
+        <ol class="gcc-steps-nav">
+          {% for step in steps %}
+            <li{% if step_number == loop.index %} class="current"{% endif %}>
+              {% if step_number == loop.index %}
+                {{ step.title }}
+              {% else %}
+                <a href="{{ step.href | url }}">{{ step.title }}</a>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ol>
+      </nav>
+    {% endif %}
+
+  </div>
+</div>
+{% endblock %}
