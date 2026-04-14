@@ -1,364 +1,379 @@
 # CLAUDE.md — Build instructions
 
-You are building an Eleventy static site in this repository. The site
-publishes customer-facing Council Tax pages generated from schema.
-Every page carries end-to-end provenance from schema record → markdown
-→ HTML → deployed page.
+You are building an Eleventy static site for **Gloucester City Council**.
+This is a general-purpose council website, not a Council Tax microsite.
+Council Tax is one service area among many. The architecture must
+accommodate any service area the council runs.
 
-## Repository layout (already in place — do not move)
+Schema-derived pages carry end-to-end provenance (schema → markdown →
+HTML → deployed page). Hand-authored pages build without provenance.
+
+## Repository layout — do not modify these directories
 
 ```
-/build/         ← pre-generated markdown pages with provenance frontmatter
-/schema/        ← ctax schema pack (facts, rules, results, taxonomy)
-/provenance/    ← provenance format spec (v0.2) — the contract you must honour
+/build/       ← pre-generated markdown (provenance frontmatter)
+/schema/      ← ctax schema pack
+/provenance/  ← provenance-format-spec-v0.2.md — the contract
 ```
 
-These three directories are your inputs. Do not modify them.
+Read `/provenance/provenance-format-spec-v0.2.md` before starting.
 
-You will create everything else.
+---
 
-## What you must build
+## Design system
 
-A working Eleventy 3.x site in this repository that:
+**No GOV.UK Frontend.** Do not install it. Do not use its class names.
+All CSS is hand-written in `src/assets/`.
 
-1. Reads markdown from `/build/` and renders each file to a deployed page
-2. Preserves the provenance chain end to end (frontmatter → HTML meta,
-   inline comment markers → DOM attributes, visible provenance footer)
-3. Applies publication gates (pages with `can_publish: false` are
-   excluded from the build)
-4. Uses GOV.UK Design System styling (colours, typography, grid,
-   components) but **without Crown Copyright branding** — no crown
-   logo, no HMG footer, no "GOV.UK" wordmark in the header
-5. Deploys to Azure Static Web Apps via GitHub Actions on every push to
-   `main`
+### Tokens (`src/assets/tokens.css`)
 
-Read `/provenance/` first. The spec there is authoritative. The
-markdown files in `/build/` conform to it. Your job is to render them
-faithfully.
+```css
+:root {
+  /* Colours */
+  --gcc-teal:       #00757F;
+  --gcc-teal-dark:  #005358;
+  --gcc-ink:        #1A1A2E;
+  --gcc-surface:    #F7F8F9;
+  --gcc-white:      #FFFFFF;
+  --gcc-mid:        #6B7280;
+  --gcc-border:     #E2E8F0;
+  --gcc-amber:      #D97706;
+  --gcc-green:      #059669;
+  --gcc-red:        #DC2626;
 
-## Files you must create
+  /* Spacing (8px base) */
+  --space-1: 4px;  --space-2: 8px;   --space-3: 12px;
+  --space-4: 16px; --space-5: 24px;  --space-6: 32px;
+  --space-7: 40px; --space-8: 48px;  --space-9: 64px;
+  --space-10: 80px;
+
+  /* Type — fluid via clamp() */
+  --text-xs:   clamp(0.7rem,  0.65rem + 0.25vw, 0.75rem);
+  --text-sm:   clamp(0.8rem,  0.75rem + 0.25vw, 0.875rem);
+  --text-base: clamp(0.9rem,  0.85rem + 0.25vw, 1rem);
+  --text-lg:   clamp(1rem,    0.95rem + 0.3vw,  1.125rem);
+  --text-xl:   clamp(1.1rem,  1rem + 0.5vw,     1.375rem);
+  --text-2xl:  clamp(1.3rem,  1.1rem + 1vw,     1.75rem);
+  --text-3xl:  clamp(1.6rem,  1.3rem + 1.5vw,   2.25rem);
+  --font-heading: 'Sora', sans-serif;
+  --font-body:    'Inter', sans-serif;
+
+  /* Misc */
+  --radius:     6px;
+  --radius-sm:  3px;
+  --transition: 150ms ease;
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.10);
+  --focus-ring: 0 0 0 3px var(--gcc-teal), 0 0 0 6px var(--gcc-white);
+}
+```
+
+### Fonts
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+```
+
+### Visual character
+
+Modern British civic. Confident, warm, accessible. Sora headings give
+sharp geometric authority; Inter body text is screen-optimised. White
+page background with off-white (`--gcc-surface`) for secondary zones.
+Teal brand colour used purposefully — header bar, card top borders,
+active links. No decorative animation; subtle lift on interactive
+elements. 6px border-radius throughout.
+
+---
+
+## Content types and layouts
+
+| Layout | Use case |
+|---|---|
+| `base.njk` | Site chrome — all others extend this |
+| `policy-page.njk` | Schema-derived service info (Council Tax, planning, etc.) |
+| `landing-page.njk` | Service area home pages with card navigation |
+| `article.njk` | News, consultations, announcements |
+| `guide.njk` | Multi-step how-to content |
+
+Provenance is **always optional**. Pages without a `provenance`
+frontmatter block must build cleanly with no provenance markup.
+
+---
+
+## Files to create
 
 ### `package.json`
 
 ```json
 {
-  "name": "gcc-council-tax",
+  "name": "gcc-website",
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prebuild": "node scripts/stage-build.js",
     "build": "eleventy",
     "serve": "eleventy --serve"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.0.0",
-    "govuk-frontend": "^5.7.0"
+    "@11ty/eleventy": "^3.0.0"
   }
 }
 ```
 
 ### `.eleventy.js`
 
-Configure Eleventy to:
+- Input `src/`, output `_site/`
+- Nunjucks for templates and markdown
+- Override markdown-it `html_block` and `html_inline` to return
+  `tokens[idx].content` verbatim (preserves `<!-- provenance: … -->` comments)
+- Passthrough-copy `src/assets/` → `_site/assets/`
+- `setUseGitIgnore(false)` so staged `src/pages/` gets built
+- Global data: `currentYear`
+- `templateFormats: ["njk", "md", "html", "11ty.js"]`
 
-- Use `src/` as input (you will copy markdown from `/build/` into
-  `src/pages/` at build time — see build script below)
-- Use `_site/` as output
-- Use Nunjucks for templating and markdown processing
-- Preserve HTML comments during markdown rendering (required for
-  inline provenance markers to survive)
-- Passthrough-copy the GOV.UK Frontend CSS and fonts into the output
-- Expose a `publishable` filter that excludes pages where
-  `data.publication_gates.can_publish === false`
-- Build a collection `collections.publishable` from all pages with
-  `tags: council-tax` that pass the filter
-- Emit `/provenance-index.json` as a build artefact (see template below)
+**Collections**
 
-Preserve HTML comments by overriding markdown-it's default block/inline
-HTML renderers to return `tokens[idx].content` verbatim.
+```js
+// All pages that pass their publication gate (or have none)
+eleventyConfig.addCollection("publishable", (api) =>
+  api.getAll().filter((p) =>
+    !p.data.publication_gates || p.data.publication_gates.can_publish !== false
+  )
+);
+
+// Council Tax subset — repeat this pattern for each service area
+eleventyConfig.addCollection("councilTax", (api) =>
+  api.getFilteredByTag("council-tax").filter((p) =>
+    !p.data.publication_gates || p.data.publication_gates.can_publish !== false
+  )
+);
+```
+
+**Filters:** `readableDate`, `isoDate`, `shortHash`, `readable`,
+`urlencode`, `capitalize`. Normalise YAML-coerced Date objects via
+`const toDate = (v) => (v instanceof Date ? v : new Date(v))`.
+
+---
 
 ### `src/_includes/base.njk`
 
-The site chrome, based on GOV.UK Design System.
+Site chrome. Exposes `{% block head %}` and `{% block content %}`.
 
-Required structure:
+**Header** — teal bar, text wordmark "Gloucester City Council" (Sora
+Bold, no logo/crest/crown), primary nav (Council Tax, Planning, Bins &
+Recycling, Contact). Mobile toggle via `<details>/<summary>` — no JS.
+Force open on desktop with:
+```css
+@media (min-width: 768px) {
+  .gcc-nav-toggle { display: contents; }
+  .gcc-nav-toggle > summary { display: none; }
+}
+```
 
-- `<html lang="en-GB" class="govuk-template">`
-- `<head>`: standard meta, GOV.UK Frontend CSS link, then a
-  `{% block head %}` for per-page provenance meta tags
-- `<body class="govuk-template__body">`
-- A skip link (`.govuk-skip-link`) to `#main-content`
-- A **modified header**: use the `.govuk-header` component structure
-  but replace the Crown / GOV.UK wordmark with the text
-  "Gloucester City Council" only. No crown SVG. No HMG logotype.
-  Keep the header's black background and white text.
-- A phase banner (`.govuk-phase-banner`) with tag "beta" and text
-  "This is a new service — your feedback will help us improve it."
-- `<main id="main-content" class="govuk-main-wrapper">` containing
-  `{% block content %}`
-- A footer using `.govuk-footer` but strip: the Crown Copyright
-  notice, the OGL licence link, and the HMG visual identity.
-  Keep the layout and colours. Replace with a simple "© Gloucester
-  City Council {{ currentYear }}" and a link to the council's
-  accessibility statement.
+**Phase bar** — teal-dark strip below header with "beta" badge and
+feedback text.
 
-Load GOV.UK Frontend CSS from `/assets/govuk-frontend.min.css` (you
-will copy this in via passthrough).
+**Footer** — teal-dark background, "© Gloucester City Council
+{{ currentYear }}", links: Accessibility statement, Cookies, Privacy.
+No Crown Copyright. No OGL. No HMG identity.
+
+**Skip link** to `#main-content`. `<main id="main-content" tabindex="-1">`.
+
+---
 
 ### `src/_includes/policy-page.njk`
 
-The layout for Council Tax policy pages. Extends `base.njk`.
+Extends `base.njk`. Used for all schema-derived service pages across
+every service area.
 
-**In the `head` block:**
-
-Emit one `<meta>` tag per provenance field from frontmatter:
-
-```njk
-<meta name="provenance:pack:id" content="{{ provenance.pack.id }}">
-<meta name="provenance:pack:version" content="{{ provenance.pack.version }}">
-<meta name="provenance:pack:authority" content="{{ provenance.pack.authority }}">
-{% for s in provenance.sources %}
-  <meta name="provenance:source:{{ loop.index0 }}:id" content="{{ s.id }}">
-  <meta name="provenance:source:{{ loop.index0 }}:role" content="{{ s.role }}">
-  <meta name="provenance:source:{{ loop.index0 }}:document" content="{{ s.document }}">
-  <meta name="provenance:source:{{ loop.index0 }}:hash" content="{{ s.hash }}">
-{% endfor %}
-<meta name="provenance:publication:can-publish" content="{{ publication_gates.can_publish }}">
-<meta name="provenance:publication:pack-status" content="{{ publication_gates.pack_status }}">
-<meta name="provenance:publication:section-status" content="{{ publication_gates.section_status }}">
-<meta name="provenance:generated-at" content="{{ provenance.generated_at }}">
-<meta name="provenance:generator" content="{{ provenance.generator }}">
-<meta name="provenance_format_version" content="{{ provenance_format_version }}">
-
-{% for s in provenance.sources %}
-  <link rel="source:{{ s.role | replace('_', '-') }}"
-        type="application/json"
-        href="{{ provenance.pack.mcp_endpoint }}?document={{ s.document }}&path={{ s.path | urlencode }}">
-{% endfor %}
-```
-
-**In the `content` block:**
-
-Use GOV.UK Design System two-thirds / one-third layout:
+**`{% block head %}`** — emit provenance meta tags only if
+`provenance` exists in frontmatter:
 
 ```njk
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <span class="govuk-caption-l">{{ eyebrow }}</span>
-    <h1 class="govuk-heading-xl">{{ title }}</h1>
-    <p class="govuk-body-l">{{ summary }}</p>
-
-    {% if publication_gates.section_status != "current" %}
-      <div class="govuk-notification-banner" role="region"
-           aria-labelledby="banner-title"
-           data-module="govuk-notification-banner">
-        <div class="govuk-notification-banner__header">
-          <h2 class="govuk-notification-banner__title" id="banner-title">
-            Important
-          </h2>
-        </div>
-        <div class="govuk-notification-banner__content">
-          <p class="govuk-notification-banner__heading">
-            This page is currently in
-            <strong>{{ publication_gates.section_status }}</strong> —
-            content is accurate but may be subject to final sign-off.
-          </p>
-        </div>
-      </div>
-    {% endif %}
-
-    <div class="govuk-body">
-      {{ content | safe }}
-    </div>
-  </div>
-
-  <div class="govuk-grid-column-one-third">
-    <aside class="govuk-related-items" role="complementary">
-      <h2 class="govuk-heading-m">Related</h2>
-      <nav role="navigation">
-        <ul class="govuk-list govuk-!-font-size-16">
-          {% for page in related_pages %}
-            <li><a class="govuk-link" href="{{ page }}">{{ page | readable }}</a></li>
-          {% endfor %}
-        </ul>
-      </nav>
-    </aside>
-  </div>
-</div>
-
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
-<section class="govuk-grid-row page-provenance" aria-labelledby="provenance-heading">
-  <div class="govuk-grid-column-two-thirds">
-    <h2 class="govuk-heading-m" id="provenance-heading">
-      Where this page comes from
-    </h2>
-    <p class="govuk-body">
-      This page was generated automatically from
-      {{ provenance.pack.authority }}'s
-      <strong>{{ provenance.pack.id }}</strong> schema pack
-      (version {{ provenance.pack.version }}). The content draws from
-      the following sources:
-    </p>
-
-    <dl class="govuk-summary-list">
-      {% for s in provenance.sources %}
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            {{ s.role | replace("_", " ") | capitalize }}
-            <span class="govuk-hint govuk-!-font-size-14">{{ s.document }}</span>
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <code class="govuk-!-font-size-14">{{ s.path }}</code><br>
-            <span class="govuk-hint govuk-!-font-size-14">
-              Hash: <code>{{ s.hash | truncate(20) }}</code>
-            </span>
-          </dd>
-        </div>
-      {% endfor %}
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">Generated</dt>
-        <dd class="govuk-summary-list__value">
-          <time datetime="{{ provenance.generated_at }}">
-            {{ provenance.generated_at | readableDate }}
-          </time>
-          by <code>{{ provenance.generator }}</code>
-        </dd>
-      </div>
-    </dl>
-  </div>
-</section>
+{% if provenance %}
+  <meta name="provenance:pack:id" content="{{ provenance.pack.id }}">
+  <meta name="provenance:pack:version" content="{{ provenance.pack.version }}">
+  <meta name="provenance:pack:authority" content="{{ provenance.pack.authority }}">
+  {% for s in provenance.sources %}
+    <meta name="provenance:source:{{ loop.index0 }}:id" content="{{ s.id }}">
+    <meta name="provenance:source:{{ loop.index0 }}:role" content="{{ s.role }}">
+    <meta name="provenance:source:{{ loop.index0 }}:document" content="{{ s.document }}">
+    <meta name="provenance:source:{{ loop.index0 }}:hash" content="{{ s.hash }}">
+  {% endfor %}
+  <meta name="provenance:publication:can-publish" content="{{ publication_gates.can_publish }}">
+  <meta name="provenance:publication:pack-status" content="{{ publication_gates.pack_status }}">
+  <meta name="provenance:publication:section-status" content="{{ publication_gates.section_status }}">
+  <meta name="provenance:generated-at" content="{{ provenance.generated_at | isoDate }}">
+  <meta name="provenance:generator" content="{{ provenance.generator }}">
+  <meta name="provenance_format_version" content="{{ provenance_format_version }}">
+  {% for s in provenance.sources %}
+    <link rel="source:{{ s.role | replace('_','-') }}" type="application/json"
+          href="{{ provenance.pack.mcp_endpoint }}?document={{ s.document }}&path={{ s.path | urlencode }}">
+  {% endfor %}
+{% endif %}
 ```
 
-### `src/_includes/filters`
+**`{% block content %}`**
 
-Add filters in `.eleventy.js`:
+1. **Page hero** — white background, border-bottom: breadcrumb nav
+   (from `breadcrumb` frontmatter array of `{url, label}`), optional
+   `eyebrow`, `h1`, optional `summary` lede.
 
-- `readableDate` — formats an ISO timestamp as "14 April 2026"
-- `readable` — converts a URL path like
-  `/council-tax/council-tax-support/` to "Council Tax Support" for
-  nav menus
-- `urlencode` — standard URL encoding for the `<link rel="source">`
-  href
+2. **Two-column layout** (CSS Grid 1fr + 300px, collapses below 900px):
+   - Left: optional review banner if
+     `publication_gates.section_status != "current"`, then
+     `{{ content | safe }}` in `.gcc-prose`
+   - Right: related pages card (`.gcc-related-card`) from
+     `related_pages` frontmatter, only if that array has items
 
-### `src/provenance-index.njk`
+3. **Provenance strip** — only if `provenance` exists. A `<details>`
+   element collapsed by default. Summary: "Where this page comes from".
+   Body: pack info + a table of sources (role, document/path, hash)
+   + generated timestamp. The `<details>` keeps it always in the DOM
+   for machine inspection but out of the way for residents.
 
-A JSON-emitting template that walks the publishable collection and
-produces `/provenance-index.json` per the v0.2 spec §"Reverse index".
+---
 
-Structure: group by pack → document → path. For each record include
-`hash_at_generation`, the list of pages citing it, and each page's
-role. Since this build doesn't call the MCP, omit `current_schema_hash`
-and `in_sync` — those are filled in by a separate staleness checker
-that runs against live schema.
+### `src/_includes/landing-page.njk`
 
-### `src/assets/site.css`
+Extends `base.njk`. Full-width (no sidebar). No provenance.
 
-A thin stylesheet that extends GOV.UK Frontend. Minimum:
+Hero (slightly teal-tinted background to distinguish from policy pages)
++ card grid from `cards` frontmatter:
 
+```yaml
+cards:
+  - title: Single Person Discount
+    href: /council-tax/discounts/single-person/
+    summary: 25% off if you're the only adult at home.
+```
+
+Cards rendered as `<a>` elements in `.gcc-card-grid` (CSS Grid,
+`auto-fill`, `minmax(280px, 1fr)`). Each card has a teal top border,
+white background, title in teal, summary in mid-grey. Subtle lift
+on hover (`translateY(-2px)` + heavier shadow).
+
+---
+
+### `src/_includes/article.njk`
+
+Extends `base.njk`. Single column, `max-width: 760px`, centred.
+No sidebar. No provenance.
+
+Renders: eyebrow, h1, publication date + optional author, summary
+lede, prose body.
+
+---
+
+### `src/_includes/guide.njk`
+
+Extends `base.njk`. Two-column layout (same grid as policy page).
+
+Left: prose content. Right: sticky numbered steps nav built from
+`steps` frontmatter (`[{title, href}]`). Current step (from
+`step_number` frontmatter) shown in bold teal without a link; other
+steps are links.
+
+---
+
+### CSS files
+
+**`src/assets/tokens.css`** — all tokens (defined above).
+
+**`src/assets/base.css`** — reset + element defaults:
+- Universal `box-sizing: border-box`
+- `body`: `--font-body`, `--gcc-ink`, `--gcc-surface`
+- `h1–h6`: `--font-heading`, size hierarchy, `line-height: 1.2`
+- `a`: `--gcc-teal`, underline on hover only
+- `:focus-visible`: `outline: none; box-shadow: var(--focus-ring)`
+- `img, svg, video`: `max-width: 100%; display: block`
+- `code, pre`: monospace, translucent `--gcc-border` background, `--radius-sm`
+- `.gcc-container`: `max-width: 1140px; margin: 0 auto; padding-inline: var(--space-4)`
+- `.skip-link`: visually hidden until `:focus`; then fixed top-left,
+  teal background, white text, high z-index
+
+**`src/assets/components.css`** — all component styles in labelled
+sections. Key components and their essential characteristics:
+
+- `.gcc-header` — teal background, flex inner, Sora Bold wordmark
+- `.gcc-nav-toggle` / `.gcc-nav` — `<details>` toggle pattern; see
+  desktop CSS override above
+- `.gcc-phase-bar` — teal-dark, "beta" badge (white bg, teal text,
+  uppercase, 600 weight)
+- `.gcc-breadcrumb` — inline flex, `›` pseudo-element separators
+- `.gcc-page-hero` — white, border-bottom, generous padding; eyebrow
+  (small, uppercase, `--gcc-mid`), heading (Sora 700, `--text-3xl`,
+  tight letter-spacing), lede (`--text-lg`, `--gcc-mid`, `max-width: 60ch`)
+- `.gcc-landing-hero` — as page-hero but 6% teal tint on background
+- `.gcc-page-layout` — `grid-template-columns: 1fr 300px`, gap
+  `--space-8`; single column below 900px
+- `.gcc-prose` — `max-width: 65ch`; h2 with teal bottom border; 1.7
+  line-height on p/li; `.gcc-prose--wide` removes max-width
+- `.gcc-card-grid` / `.gcc-card` — auto-fill grid; card has teal top
+  border, `--shadow-sm`, hover lift, title in teal, summary in `--gcc-mid`
+- `.charge-comparison` — table: teal thead, alternating row tint,
+  `--shadow-sm`, `--gcc-surface` tfoot
+- `.gcc-related-card` — white, bordered, sticky, teal-bordered heading,
+  list links with hover left-indent animation
+- `.gcc-steps-nav` — numbered list, current item bold teal (no link)
+- `.gcc-status-banner--review` — amber left border, amber-tinted bg
+- `.gcc-article` — `max-width: 760px`, centred, `--gcc-mid` meta text
+- `.gcc-provenance-strip` — muted `#F0F4F5` background, `<details>`
+  with rotating `::before` triangle; muted palette throughout so it
+  reads as technical metadata
+- `.gcc-footer` — teal-dark bg, white/translucent text, flex inner,
+  copyright left, links right
+
+**`src/assets/site.css`** — one-off overrides. Start with just:
 ```css
-/* Hide anything we don't want from the base GOV.UK theme */
-.govuk-header__logotype-crown { display: none !important; }
-
-/* Page provenance block styling */
-.page-provenance {
-  background: #f3f2f1;
-  padding: 2em 0;
-  margin-top: 3em;
-}
-
-.page-provenance dt code,
-.page-provenance dd code {
-  word-break: break-all;
-}
-
-/* Related items aside */
-.govuk-related-items {
-  border-top: 2px solid #1d70b8;
-  padding-top: 1em;
-  margin-top: 0;
-}
+body { font-display: swap; }
 ```
 
-### Build script: `scripts/stage-build.js`
+---
 
-Before Eleventy runs, copy markdown files from `/build/` into
-`src/pages/` preserving directory structure. This keeps `src/` clean
-in version control and makes `/build/` authoritative as the source of
-truth for pages.
+### `src/provenance-index.11ty.js`
 
-```js
-const fs = require("fs");
-const path = require("path");
+Emits `/provenance-index.json`. Walks `collections.publishable`,
+skips pages without `provenance`. Groups by pack id → document →
+path. Each record: `hash_at_generation`, `pages: [{url, role}]`.
+Omits `current_schema_hash` / `in_sync` (staleness checker fills
+these separately).
 
-function copyDir(src, dest) {
-  fs.mkdirSync(dest, { recursive: true });
-  for (const entry of fs.readdirSync(src, { withFileTypes: true })) {
-    const s = path.join(src, entry.name);
-    const d = path.join(dest, entry.name);
-    entry.isDirectory() ? copyDir(s, d) : fs.copyFileSync(s, d);
-  }
-}
+---
 
-copyDir("build", "src/pages");
-console.log("Staged markdown from /build into src/pages/");
-```
+### `scripts/stage-build.js`
 
-Add to `package.json` scripts:
+Recursively copies `/build/` → `src/pages/` at prebuild. Keeps
+`/build/` authoritative and `src/pages/` out of version control.
 
-```json
-"prebuild": "node scripts/stage-build.js",
-"build": "eleventy"
-```
-
-Also copy the GOV.UK Frontend CSS to passthrough:
-
-```js
-// in .eleventy.js
-eleventyConfig.addPassthroughCopy({
-  "node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.css":
-    "assets/govuk-frontend.min.css"
-});
-eleventyConfig.addPassthroughCopy({
-  "node_modules/govuk-frontend/dist/govuk/assets":
-    "assets/govuk"
-});
-eleventyConfig.addPassthroughCopy("src/assets");
-```
+---
 
 ### `.github/workflows/build-and-deploy.yml`
 
 ```yaml
 name: Build and deploy
-
 on:
   push:
     branches: [main]
   workflow_dispatch:
   pull_request:
     branches: [main]
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Set up Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build site
-        run: npm run build
-
+      - run: npm ci
+      - run: npm run build
       - name: Deploy to Azure Static Web Apps
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: Azure/static-web-apps-deploy@v1
@@ -369,8 +384,7 @@ jobs:
           app_location: "_site"
           output_location: ""
           skip_app_build: true
-
-      - name: Upload build artefact (on PR)
+      - name: Upload preview artefact
         if: github.event_name == 'pull_request'
         uses: actions/upload-artifact@v4
         with:
@@ -386,73 +400,51 @@ _site/
 src/pages/
 ```
 
-`src/pages/` is staged from `/build/` at build time — never commit it.
+---
 
-### `README.md`
+## Validation checklist
 
-Short repo-level README explaining:
+`npm run build` must produce:
 
-- Source of truth for content is `/build/` (generated markdown)
-- Source of truth for schema is `/schema/`
-- Contract for provenance is `/provenance/`
-- `src/_includes/` contains Eleventy layouts — these are the only
-  things a developer needs to edit
-- To add a new page: drop its markdown file into `/build/`, commit,
-  push. GitHub Actions handles the rest.
+1. ✅ HTML in `_site/` matching all frontmatter permalinks
+2. ✅ GCC CSS loaded from `src/assets/` — no GOV.UK package
+3. ✅ Sora + Inter loaded from Google Fonts
+4. ✅ Header: "Gloucester City Council" text only — no crown, no crest
+5. ✅ Mobile nav toggles via `<details>` without JavaScript
+6. ✅ All four layouts present and syntactically valid
+7. ✅ Pages with `provenance`: correct `<meta>` + `<link rel="source:*">` in `<head>`
+8. ✅ Pages without `provenance`: build cleanly, no provenance markup
+9. ✅ `<!-- provenance: … -->` comments preserved in HTML output
+10. ✅ Provenance `<details>` rendered only on pages that have a `provenance` block
+11. ✅ Pages with `publication_gates.can_publish: false` excluded
+12. ✅ `/provenance-index.json` emitted, grouped by pack → document → path
+13. ✅ Skip link present; heading hierarchy correct; focus rings visible;
+    `<main id="main-content">` present; no empty `alt` attributes
+14. ✅ Clean build in CI
 
-## Validation checklist — the build must satisfy all of these
-
-When you've finished, a `npm run build` locally (or in CI) must:
-
-1. ✅ Produce HTML files in `_site/` matching the permalinks declared
-   in each markdown file's frontmatter
-2. ✅ Include GOV.UK Frontend CSS loaded from `/assets/govuk-frontend.min.css`
-3. ✅ Render the header as "Gloucester City Council" with no crown and
-   no GOV.UK wordmark
-4. ✅ For each page, emit `<meta name="provenance:source:N:*">` tags in
-   the head for every source declared in frontmatter
-5. ✅ For each page, emit `<link rel="source:{role}">` tags pointing to
-   the MCP endpoint
-6. ✅ Preserve `<!-- provenance: ... -->` HTML comments in rendered
-   output (verify by grep on a built HTML file)
-7. ✅ Render the visible "Where this page comes from" provenance
-   footer at the bottom of every policy page, using the GOV.UK
-   summary-list component
-8. ✅ Exclude any markdown file whose frontmatter declares
-   `publication_gates.can_publish: false` from the build output
-9. ✅ Emit `/provenance-index.json` in `_site/` listing every
-   published page grouped by pack → document → path
-10. ✅ Produce a valid build with no errors when run in CI
+---
 
 ## What you must NOT do
 
-- Do not modify anything in `/build/`, `/schema/`, or `/provenance/`.
-  These are inputs only.
-- Do not inline the GOV.UK Frontend source into the repo — install it
-  via npm and reference it from `node_modules`.
-- Do not include the GOV.UK crown logo, HMG wordmark, or Crown
-  Copyright footer text anywhere.
-- Do not hard-code page-specific logic into the layouts — everything
-  must come from frontmatter.
-- Do not build anything that calls the MCP at runtime. This build is
-  rendering only. Schema fetching is a separate concern handled
-  outside this build.
+- Install or reference `govuk-frontend`
+- Use GOV.UK class names in templates or CSS
+- Include Crown Copyright, OGL text, or HMG visual identity
+- Use a CSS framework or utility library
+- Modify `/build/`, `/schema/`, or `/provenance/`
+- Hard-code service-specific logic into `base.njk`
+- Require provenance — it is always optional, all layouts must work without it
+- Make runtime MCP calls — this build is a renderer only
 
-## Scope boundary
+---
 
-This build **renders** the site. It does not **generate** the
-markdown from the schema. The markdown in `/build/` is produced by a
-separate tool (not in scope here) and committed to the repo. When
-that tool updates the markdown, the GitHub Actions workflow rebuilds
-and redeploys automatically.
+## Adding a new service area
 
-Read `/provenance/provenance-format-spec-v0.2.md` before starting.
-The format there is the contract between this renderer and the
-upstream generator.
+1. Drop markdown into `/build/` with `layout: policy-page.njk` and
+   an optional `provenance:` block
+2. Add a tag (e.g. `tags: planning`)
+3. Add a named collection in `.eleventy.js` for that tag
+4. Add a landing page in `/build/` using `layout: landing-page.njk`
+   with `cards:` pointing at the new pages
+5. Optionally add a nav link in `base.njk`
 
-## Deliverable
-
-A single commit, or a single branch, containing every file listed
-above, passing `npm run build` without error, with a valid
-`.github/workflows/build-and-deploy.yml` that will execute on merge
-to `main`.
+No CSS, pipeline, or provenance changes required.
