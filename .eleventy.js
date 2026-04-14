@@ -103,7 +103,7 @@ module.exports = function (eleventyConfig) {
     pathPrefix: process.env.PATHPREFIX || "/",
     dir: {
       input: "src",
-      output: "_site",
+      output: process.env.SITE_OUTPUT || "_site",
       includes: "_includes",
     },
     markdownTemplateEngine: "njk",
