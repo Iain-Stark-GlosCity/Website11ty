@@ -79,7 +79,7 @@
       {% endif %}
 
       <div class="gcc-prose">
-        {{ content | safe }}
+        {{ content | prose_with_provenance | safe }}
       </div>
 
     </article>
