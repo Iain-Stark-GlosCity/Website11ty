@@ -21,14 +21,32 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
 
   // ── Filters ────────────────────────────────────────────────────────
-  eleventyConfig.addFilter("readableDate", (dateStr) => {
-    if (!dateStr) return "";
-    const d = new Date(dateStr);
-    return d.toLocaleDateString("en-GB", {
+
+  // YAML parsers silently coerce ISO timestamps to JS Date objects.
+  // Normalise before any date operation so both strings and Dates work.
+  const toDate = (val) => (val instanceof Date ? val : new Date(val));
+
+  eleventyConfig.addFilter("readableDate", (val) => {
+    if (!val) return "";
+    return toDate(val).toLocaleDateString("en-GB", {
       day: "numeric",
       month: "long",
       year: "numeric",
     });
+  });
+
+  // ISO 8601 string for <time datetime="..."> — valid HTML5, handles Date objects.
+  eleventyConfig.addFilter("isoDate", (val) => {
+    if (!val) return "";
+    return toDate(val).toISOString();
+  });
+
+  // Consistent short hash: shows prefix + 14 hex chars + ellipsis.
+  // Strips the "sha256:" scheme prefix before truncating.
+  eleventyConfig.addFilter("shortHash", (hash) => {
+    if (!hash) return "";
+    const hex = hash.replace(/^sha256:/, "");
+    return "sha256:" + hex.slice(0, 14) + "…";
   });
 
   eleventyConfig.addFilter("readable", (urlPath) => {

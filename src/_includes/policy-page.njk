@@ -13,7 +13,7 @@
 <meta name="provenance:publication:can-publish" content="{{ publication_gates.can_publish }}">
 <meta name="provenance:publication:pack-status" content="{{ publication_gates.pack_status }}">
 <meta name="provenance:publication:section-status" content="{{ publication_gates.section_status }}">
-<meta name="provenance:generated-at" content="{{ provenance.generated_at }}">
+<meta name="provenance:generated-at" content="{{ provenance.generated_at | isoDate }}">
 <meta name="provenance:generator" content="{{ provenance.generator }}">
 <meta name="provenance_format_version" content="{{ provenance_format_version }}">
 
@@ -94,7 +94,7 @@
           <dd class="govuk-summary-list__value">
             <code class="govuk-!-font-size-14">{{ s.path }}</code><br>
             <span class="govuk-hint govuk-!-font-size-14">
-              Hash: <code>{{ s.hash | truncate(20) }}</code>
+              Hash: <code>{{ s.hash | shortHash }}</code>
             </span>
           </dd>
         </div>
@@ -102,7 +102,7 @@
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">Generated</dt>
         <dd class="govuk-summary-list__value">
-          <time datetime="{{ provenance.generated_at }}">
+          <time datetime="{{ provenance.generated_at | isoDate }}">
             {{ provenance.generated_at | readableDate }}
           </time>
           by <code>{{ provenance.generator }}</code>
