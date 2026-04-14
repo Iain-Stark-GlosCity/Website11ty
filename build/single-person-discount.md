@@ -309,7 +309,3 @@ help, the more we can do.
 - **Post:** Gloucester City Revenues & Benefits, Eastgate Management Suite, Eastgate Street, Gloucester, GL1 1PA
 
 ---
-
-<!-- The renderer should emit a visible provenance footer here from
-     the frontmatter sources block. See provenance-format-spec v0.2
-     §"Visible provenance footer". -->
