@@ -69,6 +69,33 @@ module.exports = function (eleventyConfig) {
     return str.charAt(0).toUpperCase() + str.slice(1);
   });
 
+  // ── Provenance section wrapper ─────────────────────────────────────
+  // Converts inline <!-- provenance: {id} --> comments into
+  // <section data-provenance="{id}"> wrappers as specified in
+  // provenance-format-spec-v0.2.md §"Inline DOM attributes".
+  // Applied only where templates explicitly call | prose_with_provenance.
+  eleventyConfig.addFilter("prose_with_provenance", (content) => {
+    if (!content || !content.includes("<!-- provenance:")) return content;
+
+    // Split on provenance comment markers.
+    // String.split with a capture group interleaves [content, id, content, id, ...].
+    const segments = content.split(/<!-- provenance: ([^\s>]+) -->/);
+
+    if (segments.length <= 1) return content;
+
+    // segments[0]  = content before the first comment (rendered without a wrapper)
+    // segments[1]  = first provenance ID
+    // segments[2]  = content belonging to first section
+    // segments[3]  = second provenance ID   … etc.
+    let result = segments[0];
+    for (let i = 1; i < segments.length; i += 2) {
+      const id = segments[i];
+      const body = segments[i + 1] || "";
+      result += `<section data-provenance="${id}">\n${body}</section>\n`;
+    }
+    return result;
+  });
+
   // ── Publication gate filter ────────────────────────────────────────
   eleventyConfig.addFilter("publishable", (pages) => {
     return (pages || []).filter(

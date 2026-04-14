@@ -52,6 +52,26 @@ provenance:
       hash: sha256:a1b2c3d4e5f67890abcdef1234567890abcdef1234567890abcdef1234567890
       lookup_method: CTax:schema_get
 
+    - id: ctax/rules@2.4.0+2.2:/rule_sets/adjustment_rules[rule_id=full-time-students]#b2c3d4e5
+      document: rules
+      document_version: "2.2"
+      role: cross_reference
+      used_for:
+        - who_doesnt_count_as_an_adult
+      path: /rule_sets/adjustment_rules[rule_id=full-time-students]
+      hash: sha256:b2c3d4e5f67890abcdef1234567890abcdef1234567890abcdef1234567890ab
+      lookup_method: CTax:schema_get
+
+    - id: ctax/taxonomy@2.4.0+2.2:/mechanisms[id=discount]#e5f6a7b8
+      document: taxonomy
+      document_version: "2.2"
+      role: vocabulary
+      used_for:
+        - mechanism_label
+      path: /mechanisms[id=discount]
+      hash: sha256:e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6
+      lookup_method: CTax:schema_get
+
     - id: ctax/results@2.4.0+2.2:/publication_control/section_statuses/discounts#c9d0e1f2
       document: results
       document_version: "2.2"

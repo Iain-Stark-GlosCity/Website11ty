@@ -27,10 +27,20 @@
     <meta name="provenance:source:1:document" content="rules">
     <meta name="provenance:source:1:hash"     content="sha256:a1b2c3d4e5f67890abcdef1234567890abcdef1234567890abcdef1234567890">
   
-    <meta name="provenance:source:2:id"       content="ctax/results@2.4.0+2.2:/publication_control/section_statuses/discounts#c9d0e1f2">
-    <meta name="provenance:source:2:role"     content="publication_state">
-    <meta name="provenance:source:2:document" content="results">
-    <meta name="provenance:source:2:hash"     content="sha256:c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0">
+    <meta name="provenance:source:2:id"       content="ctax/rules@2.4.0+2.2:/rule_sets/adjustment_rules[rule_id=full-time-students]#b2c3d4e5">
+    <meta name="provenance:source:2:role"     content="cross_reference">
+    <meta name="provenance:source:2:document" content="rules">
+    <meta name="provenance:source:2:hash"     content="sha256:b2c3d4e5f67890abcdef1234567890abcdef1234567890abcdef1234567890ab">
+  
+    <meta name="provenance:source:3:id"       content="ctax/taxonomy@2.4.0+2.2:/mechanisms[id=discount]#e5f6a7b8">
+    <meta name="provenance:source:3:role"     content="vocabulary">
+    <meta name="provenance:source:3:document" content="taxonomy">
+    <meta name="provenance:source:3:hash"     content="sha256:e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6">
+  
+    <meta name="provenance:source:4:id"       content="ctax/results@2.4.0+2.2:/publication_control/section_statuses/discounts#c9d0e1f2">
+    <meta name="provenance:source:4:role"     content="publication_state">
+    <meta name="provenance:source:4:document" content="results">
+    <meta name="provenance:source:4:hash"     content="sha256:c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0">
   
   <meta name="provenance:publication:can-publish"     content="true">
   <meta name="provenance:publication:pack-status"     content="review">
@@ -46,6 +56,14 @@
     <link rel="source:implementing-logic"
           type="application/json"
           href="https://func-mpc-poc.azurewebsites.net/api/mcp-schema?document=rules&path=%2Fexecutable_rule_slices%2Frules%5Brule_id%3Drule.discount.single_person%5D">
+  
+    <link rel="source:cross-reference"
+          type="application/json"
+          href="https://func-mpc-poc.azurewebsites.net/api/mcp-schema?document=rules&path=%2Frule_sets%2Fadjustment_rules%5Brule_id%3Dfull-time-students%5D">
+  
+    <link rel="source:vocabulary"
+          type="application/json"
+          href="https://func-mpc-poc.azurewebsites.net/api/mcp-schema?document=taxonomy&path=%2Fmechanisms%5Bid%3Ddiscount%5D">
   
     <link rel="source:publication-state"
           type="application/json"
@@ -139,7 +157,8 @@
       
 
       <div class="gcc-prose">
-        <!-- provenance: ctax/facts@2.4.0+2.2:/adjustment_catalogue/discounts/items/0#eligibility#8311bd27 -->
+        <section data-provenance="ctax/facts@2.4.0+2.2:/adjustment_catalogue/discounts/items/0#eligibility#8311bd27">
+
 <h2>Who can get it</h2>
 <p>You can claim Single Person Discount if you are the only adult — the only person aged 18 or over — living in your home as your <strong>main residence</strong>.</p>
 <div class="gcc-callout gcc-callout--info">
@@ -149,7 +168,9 @@
   </div>
 </div>
 <p>If you share your home with other adults but they are <strong>disregarded</strong> for Council Tax purposes (see below), you may still qualify.</p>
-<!-- provenance: ctax/rules@2.4.0+2.2:/rule_sets/adjustment_rules[rule_id=full-time-students]#b2c3d4e5 -->
+</section>
+<section data-provenance="ctax/rules@2.4.0+2.2:/rule_sets/adjustment_rules[rule_id=full-time-students]#b2c3d4e5">
+
 <h2>Who doesn't count as an adult</h2>
 <p>Some people are <strong>disregarded</strong> — they live in your home but aren't counted when we work out your bill. If everyone else at your address is disregarded, you qualify for Single Person Discount even if you're not living alone.</p>
 <p>Disregarded people include:</p>
@@ -192,7 +213,9 @@
     </tr>
   </tfoot>
 </table>
-<!-- provenance: ctax/facts@2.4.0+2.2:/adjustment_catalogue/discounts/items/0#application_process#8311bd27 -->
+</section>
+<section data-provenance="ctax/facts@2.4.0+2.2:/adjustment_catalogue/discounts/items/0#application_process#8311bd27">
+
 <h2>How to apply</h2>
 <p>There are two ways to claim:</p>
 <p><strong>Online — usually fastest</strong></p>
@@ -205,7 +228,9 @@
     <p><strong>Keep paying your current bill</strong> while your claim is assessed. If the discount is approved we'll issue a revised bill and refund any overpayment.</p>
   </div>
 </div>
-<!-- provenance: ctax/facts@2.4.0+2.2:/adjustment_catalogue/discounts/items/0#change_in_circumstances#8311bd27 -->
+</section>
+<section data-provenance="ctax/facts@2.4.0+2.2:/adjustment_catalogue/discounts/items/0#change_in_circumstances#8311bd27">
+
 <h2>If your circumstances change</h2>
 <p>You must tell us within <strong>21 days</strong> if anything changes that might affect your entitlement to the discount. Examples include:</p>
 <ul>
@@ -221,7 +246,9 @@
     <p>If you fail to report a change in time, we'll issue an amended bill for the amount underpaid. We may also add a <strong>£70 penalty charge</strong>. Tell us as soon as you can and we'll work it out together.</p>
   </div>
 </div>
-<!-- provenance: ctax/rules@2.4.0+2.2:/executable_rule_slices/rules[rule_id=rule.discount.single_person]#a1b2c3d4 -->
+</section>
+<section data-provenance="ctax/rules@2.4.0+2.2:/executable_rule_slices/rules[rule_id=rule.discount.single_person]#a1b2c3d4">
+
 <h2>How we calculate it</h2>
 <ol>
 <li>We start with your <strong>gross Council Tax charge</strong> for the year.</li>
@@ -231,7 +258,9 @@
 </ol>
 <p>The discount applies after exemptions and disregards but before any premiums (such as the second homes premium) and before Council Tax Support.</p>
 <p>This logic comes directly from rule <strong><code>rule.discount.single_person</code></strong> in our published Council Tax rule set.</p>
-<!-- provenance: ctax/facts@2.4.0+2.2:/adjustment_catalogue/discounts/items/0#legal_basis#8311bd27 -->
+</section>
+<section data-provenance="ctax/facts@2.4.0+2.2:/adjustment_catalogue/discounts/items/0#legal_basis#8311bd27">
+
 <h2>The law behind this</h2>
 <p>Single Person Discount is a <strong>statutory national discount</strong> set out in <strong>Schedule 1 of the Local Government Finance Act 1992</strong>. All councils must offer it — if you qualify, you are entitled to it.</p>
 <h2>Other help available</h2>
@@ -245,6 +274,7 @@
 <li><strong>Online:</strong> <a href="https://gloucester-self.achieveservice.com/">My Gloucester account</a></li>
 <li><strong>Post:</strong> Gloucester City Revenues &amp; Benefits, Eastgate Management Suite, Eastgate Street, Gloucester GL1 1PA</li>
 </ul>
+</section>
 
       </div>
 
@@ -322,6 +352,24 @@
                   <code>/executable_rule_slices/rules[rule_id=rule.discount.single_person]</code>
                 </td>
                 <td><code>sha256:a1b2c3d4e5f678…</code></td>
+              </tr>
+            
+              <tr>
+                <td>Cross reference</td>
+                <td>
+                  <code>rules</code><br>
+                  <code>/rule_sets/adjustment_rules[rule_id=full-time-students]</code>
+                </td>
+                <td><code>sha256:b2c3d4e5f67890…</code></td>
+              </tr>
+            
+              <tr>
+                <td>Vocabulary</td>
+                <td>
+                  <code>taxonomy</code><br>
+                  <code>/mechanisms[id=discount]</code>
+                </td>
+                <td><code>sha256:e5f6a7b8c9d0e1…</code></td>
               </tr>
             
               <tr>
