@@ -64,23 +64,33 @@ module.exports = function (eleventyConfig) {
     return encodeURIComponent(str);
   });
 
+  eleventyConfig.addFilter("capitalize", (str) => {
+    if (!str) return "";
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  });
+
   // ── Publication gate filter ────────────────────────────────────────
   eleventyConfig.addFilter("publishable", (pages) => {
     return (pages || []).filter(
-      (p) => p.data.publication_gates && p.data.publication_gates.can_publish !== false
+      (p) => !p.data.publication_gates || p.data.publication_gates.can_publish !== false
     );
   });
 
   // ── Collections ────────────────────────────────────────────────────
-  eleventyConfig.addCollection("publishable", (collectionApi) => {
-    return collectionApi
-      .getFilteredByTag("council-tax")
-      .filter(
-        (p) =>
-          p.data.publication_gates &&
-          p.data.publication_gates.can_publish !== false
-      );
-  });
+
+  // All pages that pass their publication gate (or have none)
+  eleventyConfig.addCollection("publishable", (api) =>
+    api.getAll().filter(
+      (p) => !p.data.publication_gates || p.data.publication_gates.can_publish !== false
+    )
+  );
+
+  // Council Tax subset
+  eleventyConfig.addCollection("councilTax", (api) =>
+    api.getFilteredByTag("council-tax").filter(
+      (p) => !p.data.publication_gates || p.data.publication_gates.can_publish !== false
+    )
+  );
 
   // ── Global data ────────────────────────────────────────────────────
   eleventyConfig.addGlobalData("currentYear", () => new Date().getFullYear());

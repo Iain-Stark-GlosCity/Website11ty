@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>{% if title %}{{ title }} — Gloucester City Council{% else %}Gloucester City Council{% endif %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ "/assets/gcc/tokens.css" | url }}">
+    <link rel="stylesheet" href="{{ "/assets/gcc/base.css" | url }}">
+    <link rel="stylesheet" href="{{ "/assets/gcc/components.css" | url }}">
+    <link rel="stylesheet" href="{{ "/assets/gcc/site.css" | url }}">
+    {% block head %}{% endblock %}
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="gcc-header" role="banner">
+      <div class="gcc-container gcc-header__inner">
+        <a href="{{ "/" | url }}" class="gcc-header__wordmark">Gloucester City Council</a>
+        <details class="gcc-nav-toggle">
+          <summary>Menu</summary>
+          <ul class="gcc-nav">
+            <li><a href="{{ "/council-tax/" | url }}">Council Tax</a></li>
+            <li><a href="{{ "/planning/" | url }}">Planning</a></li>
+            <li><a href="{{ "/bins-recycling/" | url }}">Bins &amp; Recycling</a></li>
+            <li><a href="{{ "/contact/" | url }}">Contact</a></li>
+          </ul>
+        </details>
+      </div>
+    </header>
+
+    <div class="gcc-phase-bar" role="complementary">
+      <div class="gcc-container gcc-phase-bar__inner">
+        <strong class="gcc-phase-badge">beta</strong>
+        <span>This is a new service — <a href="{{ "/feedback/" | url }}">your feedback will help us improve it</a>.</span>
+      </div>
+    </div>
+
+    <main id="main-content" tabindex="-1">
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="gcc-footer" role="contentinfo">
+      <div class="gcc-container gcc-footer__inner">
+        <span>&copy; Gloucester City Council {{ currentYear }}</span>
+        <ul class="gcc-footer__links">
+          <li><a href="{{ "/accessibility-statement/" | url }}">Accessibility statement</a></li>
+          <li><a href="{{ "/cookies/" | url }}">Cookies</a></li>
+          <li><a href="{{ "/privacy/" | url }}">Privacy</a></li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

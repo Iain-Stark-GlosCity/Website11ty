@@ -1,0 +1,26 @@
+{% extends "gcc/base.njk" %}
+
+{% block content %}
+<div class="gcc-page-hero">
+  <div class="gcc-container">
+    {% if eyebrow %}<span class="gcc-page-hero__eyebrow">{{ eyebrow }}</span>{% endif %}
+    <h1 class="gcc-page-hero__heading">{{ title }}</h1>
+    {% if summary %}<p class="gcc-page-hero__lede">{{ summary }}</p>{% endif %}
+  </div>
+</div>
+
+<div class="gcc-article gcc-prose">
+  {% if date or author %}
+    <div class="gcc-article__meta">
+      {% if date %}
+        <time datetime="{{ date | isoDate }}">{{ date | readableDate }}</time>
+      {% endif %}
+      {% if author %}
+        <span>{{ author }}</span>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {{ content | safe }}
+</div>
+{% endblock %}

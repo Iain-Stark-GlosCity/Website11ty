@@ -1,0 +1,24 @@
+{% extends "gcc/base.njk" %}
+
+{% block content %}
+<div class="gcc-landing-hero">
+  <div class="gcc-container">
+    {% if eyebrow %}<span class="gcc-page-hero__eyebrow">{{ eyebrow }}</span>{% endif %}
+    <h1 class="gcc-page-hero__heading">{{ title }}</h1>
+    {% if summary %}<p class="gcc-page-hero__lede">{{ summary }}</p>{% endif %}
+  </div>
+</div>
+
+<div class="gcc-container">
+  {% if cards and (cards | length) %}
+    <div class="gcc-card-grid">
+      {% for card in cards %}
+        <a href="{{ card.href | url }}" class="gcc-card">
+          <p class="gcc-card__title">{{ card.title }}</p>
+          {% if card.summary %}<p class="gcc-card__summary">{{ card.summary }}</p>{% endif %}
+        </a>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+{% endblock %}
