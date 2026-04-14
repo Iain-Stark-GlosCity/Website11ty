@@ -1,0 +1,14 @@
+{
+  "name": "gcc-council-tax",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "prebuild": "node scripts/stage-build.js",
+    "build": "eleventy",
+    "serve": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "govuk-frontend": "^5.7.0"
+  }
+}
