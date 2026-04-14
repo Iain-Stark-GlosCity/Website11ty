@@ -1,26 +1,47 @@
 {% extends "gcc/base.njk" %}
 
 {% block content %}
-<div class="gcc-page-hero">
+
+<div class="gcc-article-header">
   <div class="gcc-container">
-    {% if eyebrow %}<span class="gcc-page-hero__eyebrow">{{ eyebrow }}</span>{% endif %}
-    <h1 class="gcc-page-hero__heading">{{ title }}</h1>
-    {% if summary %}<p class="gcc-page-hero__lede">{{ summary }}</p>{% endif %}
+    {% if breadcrumb %}
+      <nav aria-label="Breadcrumb">
+        <ol class="gcc-breadcrumb">
+          {% for crumb in breadcrumb %}
+            <li>
+              {% if not loop.last %}
+                <a href="{{ crumb.url | url }}">{{ crumb.label }}</a>
+              {% else %}
+                {{ crumb.label }}
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ol>
+      </nav>
+    {% endif %}
+
+    {% if eyebrow %}<span class="gcc-eyebrow">{{ eyebrow }}</span>{% endif %}
+    <h1 class="gcc-page-header__title">{{ title }}</h1>
+    {% if summary %}<p class="gcc-lead">{{ summary }}</p>{% endif %}
+
+    {% if date or author %}
+      <div class="gcc-article-meta">
+        {% if date %}
+          <time datetime="{{ date | isoDate }}">{{ date | readableDate }}</time>
+        {% endif %}
+        {% if date and author %}
+          <span class="gcc-article-meta__sep" aria-hidden="true"></span>
+        {% endif %}
+        {% if author %}<span>{{ author }}</span>{% endif %}
+      </div>
+    {% endif %}
   </div>
 </div>
 
-<div class="gcc-article gcc-prose">
-  {% if date or author %}
-    <div class="gcc-article__meta">
-      {% if date %}
-        <time datetime="{{ date | isoDate }}">{{ date | readableDate }}</time>
-      {% endif %}
-      {% if author %}
-        <span>{{ author }}</span>
-      {% endif %}
-    </div>
-  {% endif %}
-
-  {{ content | safe }}
+<div class="gcc-article-body">
+  <div class="gcc-prose">
+    {{ content | safe }}
+  </div>
 </div>
+
 {% endblock %}

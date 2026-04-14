@@ -16,25 +16,33 @@
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <header class="gcc-header" role="banner">
-      <div class="gcc-container gcc-header__inner">
-        <a href="{{ "/" | url }}" class="gcc-header__wordmark">Gloucester City Council</a>
-        <details class="gcc-nav-toggle">
-          <summary>Menu</summary>
-          <ul class="gcc-nav">
-            <li><a href="{{ "/council-tax/" | url }}">Council Tax</a></li>
-            <li><a href="{{ "/planning/" | url }}">Planning</a></li>
-            <li><a href="{{ "/bins-recycling/" | url }}">Bins &amp; Recycling</a></li>
-            <li><a href="{{ "/contact/" | url }}">Contact</a></li>
-          </ul>
-        </details>
+    <header class="gcc-site-header" role="banner">
+      <div class="gcc-site-header__bar">
+        <div class="gcc-container gcc-site-header__inner">
+          <a href="{{ "/" | url }}" class="gcc-site-header__wordmark" aria-label="Gloucester City Council home">
+            <span class="gcc-site-header__name">Gloucester City Council</span>
+          </a>
+          <details class="gcc-nav-toggle">
+            <summary aria-label="Open navigation menu">Menu</summary>
+            <ul class="gcc-primary-nav" role="list">
+              <li><a href="{{ "/council-tax/" | url }}">Council Tax</a></li>
+              <li><a href="{{ "/planning/" | url }}">Planning</a></li>
+              <li><a href="{{ "/bins-recycling/" | url }}">Bins &amp; Recycling</a></li>
+              <li><a href="{{ "/parking/" | url }}">Parking</a></li>
+              <li><a href="{{ "/contact/" | url }}">Contact</a></li>
+            </ul>
+          </details>
+        </div>
       </div>
     </header>
 
-    <div class="gcc-phase-bar" role="complementary">
+    <div class="gcc-phase-bar" role="complementary" aria-label="Service status">
       <div class="gcc-container gcc-phase-bar__inner">
         <strong class="gcc-phase-badge">beta</strong>
-        <span>This is a new service — <a href="{{ "/feedback/" | url }}">your feedback will help us improve it</a>.</span>
+        <span class="gcc-phase-bar__text">
+          This is a new service —
+          <a href="{{ "/feedback/" | url }}">your feedback will help us improve it</a>.
+        </span>
       </div>
     </div>
 
@@ -43,13 +51,43 @@
     </main>
 
     <footer class="gcc-footer" role="contentinfo">
-      <div class="gcc-container gcc-footer__inner">
-        <span>&copy; Gloucester City Council {{ currentYear }}</span>
-        <ul class="gcc-footer__links">
-          <li><a href="{{ "/accessibility-statement/" | url }}">Accessibility statement</a></li>
-          <li><a href="{{ "/cookies/" | url }}">Cookies</a></li>
-          <li><a href="{{ "/privacy/" | url }}">Privacy</a></li>
-        </ul>
+      <div class="gcc-footer__upper">
+        <div class="gcc-container gcc-footer__upper-grid">
+          <div>
+            <a href="{{ "/" | url }}" class="gcc-footer__brand-name">Gloucester City Council</a>
+            <p class="gcc-footer__tagline">Serving the people of Gloucester. Your council, online.</p>
+          </div>
+          <div>
+            <h2 class="gcc-footer__col-heading">Services</h2>
+            <ul class="gcc-footer__links" role="list">
+              <li><a href="{{ "/council-tax/" | url }}">Council Tax</a></li>
+              <li><a href="{{ "/planning/" | url }}">Planning</a></li>
+              <li><a href="{{ "/bins-recycling/" | url }}">Bins &amp; Recycling</a></li>
+              <li><a href="{{ "/parking/" | url }}">Parking</a></li>
+              <li><a href="{{ "/housing/" | url }}">Housing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="gcc-footer__col-heading">Council</h2>
+            <ul class="gcc-footer__links" role="list">
+              <li><a href="{{ "/about/" | url }}">About the council</a></li>
+              <li><a href="{{ "/news/" | url }}">News</a></li>
+              <li><a href="{{ "/meetings/" | url }}">Meetings &amp; decisions</a></li>
+              <li><a href="{{ "/jobs/" | url }}">Jobs</a></li>
+              <li><a href="{{ "/contact/" | url }}">Contact us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="gcc-footer__lower">
+        <div class="gcc-container gcc-footer__lower-inner">
+          <span class="gcc-footer__copyright">&copy; Gloucester City Council {{ currentYear }}</span>
+          <ul class="gcc-footer__legal" role="list">
+            <li><a href="{{ "/accessibility-statement/" | url }}">Accessibility</a></li>
+            <li><a href="{{ "/cookies/" | url }}">Cookies</a></li>
+            <li><a href="{{ "/privacy/" | url }}">Privacy</a></li>
+          </ul>
+        </div>
       </div>
     </footer>
   </body>
