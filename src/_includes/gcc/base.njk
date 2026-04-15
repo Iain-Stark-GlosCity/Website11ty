@@ -6,7 +6,7 @@
     <title>{% if title %}{{ title }} — Gloucester City Council{% else %}Gloucester City Council{% endif %}</title>
 
     {# ── Core identity meta ── #}
-    <meta name="description" content="{{ description if description else summary if summary else 'Official Gloucester City Council information.' }}">
+    <meta name="description" content="{% if description %}{{ description }}{% elif summary %}{{ summary }}{% else %}Official Gloucester City Council information.{% endif %}">
     <meta name="author" content="Gloucester City Council">
     <meta name="publisher" content="Gloucester City Council">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -18,7 +18,7 @@
 
     {# ── Open Graph (used by Perplexity, Bing Copilot, ChatGPT Browse) ── #}
     <meta property="og:title" content="{{ title }} — Gloucester City Council">
-    <meta property="og:description" content="{{ description if description else summary if summary else 'Official information from Gloucester City Council.' }}">
+    <meta property="og:description" content="{% if description %}{{ description }}{% elif summary %}{{ summary }}{% else %}Official information from Gloucester City Council.{% endif %}">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Gloucester City Council">
     {% if canonical %}
