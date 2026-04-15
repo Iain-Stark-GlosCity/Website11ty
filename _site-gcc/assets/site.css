@@ -1,0 +1,50 @@
+/* Hide anything we don't want from the base GOV.UK theme */
+.govuk-header__logotype-crown { display: none !important; }
+
+/* Page provenance block styling */
+.page-provenance {
+  background: #f3f2f1;
+  padding: 2em 0;
+  margin-top: 3em;
+}
+
+.page-provenance dt code,
+.page-provenance dd code {
+  word-break: break-all;
+}
+
+/* Related items aside */
+.govuk-related-items {
+  border-top: 2px solid #1d70b8;
+  padding-top: 1em;
+  margin-top: 0;
+}
+
+/* Charge comparison table */
+.charge-comparison {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1.5em;
+}
+
+.charge-comparison caption {
+  text-align: left;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.charge-comparison th,
+.charge-comparison td {
+  border: 1px solid #b1b4b6;
+  padding: 0.5em 0.75em;
+  text-align: left;
+}
+
+.charge-comparison thead th {
+  background: #f3f2f1;
+}
+
+.charge-comparison tfoot td {
+  background: #f3f2f1;
+  font-size: 0.875em;
+}
