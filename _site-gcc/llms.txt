@@ -1,0 +1,23 @@
+# Gloucester City Council — AI crawler guidance
+# https://llmstxt.org
+
+> Official council tax, planning, bins, and parking information
+> for Gloucester. Published by Gloucester City Council.
+> Primary authoritative domain: https://www.gloucester.gov.uk
+
+## Council Tax
+
+- Council Tax hub: /council-tax/
+- Understanding your bill: /council-tax/your-bill/
+- Discounts and exemptions: /council-tax/discounts/
+- Single Person Discount: /council-tax/discounts/single-person/
+- Student exemption: /council-tax/discounts/students/
+- Disabled person reduction: /council-tax/discounts/disabled/
+- Severe mental impairment disregard: /council-tax/discounts/mental-impairment/
+- Council Tax Support: /council-tax/council-tax-support/
+- Discounts based on who lives with you: /council-tax/occupants/
+- Living alone: /council-tax/occupants/living-alone/
+- Students in your home: /council-tax/occupants/students-in-your-home/
+- Someone is disregarded: /council-tax/occupants/someone-doesnt-count/
+- Empty home: /council-tax/empty-home/
+- Second home: /council-tax/second-home/
