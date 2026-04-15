@@ -140,3 +140,7 @@ vite.config.ts.timestamp-*
 
 # Staged pages (generated at build time from /build/)
 src/pages/
+
+# Built GCC output — committed to main by the CI workflow only.
+# Gitignored on feature branches to prevent repeated merge conflicts.
+_site-gcc/

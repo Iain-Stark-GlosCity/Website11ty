@@ -1,5 +1,0 @@
-/* Site-level overrides */
-body { font-display: swap; }
-
-/* Smooth scroll offset for sticky header */
-[id] { scroll-margin-top: var(--space-7); }
