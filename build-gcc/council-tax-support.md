@@ -9,6 +9,15 @@ summary: >
   on a low income. The amount depends on your income, savings, and
   household circumstances.
 
+# ── AI/SEO signal fields ──
+description: >
+  Apply for Council Tax Support in Gloucester. Means-tested benefit that
+  reduces your Council Tax bill if you are on a low income. Also known as
+  Council Tax Reduction.
+canonical: https://www.gloucester.gov.uk/council-tax/council-tax-support/
+schema_type: GovernmentService
+dateModified: "2026-04-15"
+
 breadcrumb:
   - url: /council-tax/
     label: Council Tax

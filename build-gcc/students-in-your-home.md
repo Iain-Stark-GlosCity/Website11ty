@@ -9,6 +9,15 @@ summary: >
   your Council Tax bill. The outcome depends on who lives there
   and what their student status is.
 
+# ── AI/SEO signal fields ──
+description: >
+  Students and Council Tax in Gloucester. If everyone at your address is a
+  full-time student, your property is 100% exempt. Mixed households may
+  still qualify for a discount depending on your situation.
+canonical: https://www.gloucester.gov.uk/council-tax/occupants/students-in-your-home/
+schema_type: GovernmentService
+dateModified: "2026-04-15"
+
 breadcrumb:
   - url: /council-tax-2/
     label: Council Tax — your guide

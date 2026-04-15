@@ -9,6 +9,15 @@ summary: >
   can climb to four times the normal bill if the property stays empty
   for long enough. Here is exactly what you'll pay and when.
 
+# ── AI/SEO signal fields ──
+description: >
+  Council Tax on empty homes in Gloucester. Charges start at zero and rise
+  over time, reaching 400% for properties empty ten or more years. Includes
+  guidance for selling, probate, renovation, and care placements.
+canonical: https://www.gloucester.gov.uk/council-tax/empty-home/
+schema_type: GovernmentService
+dateModified: "2026-04-15"
+
 key_badge:
   value: "0 → 400%"
   label: as time passes

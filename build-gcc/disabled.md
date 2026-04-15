@@ -8,6 +8,15 @@ summary: >
   your Council Tax bill may be reduced to the band below yours — saving
   you the equivalent of one full Council Tax band.
 
+# ── AI/SEO signal fields ──
+description: >
+  Disabled person Council Tax reduction in Gloucester. If your home has
+  been adapted for a disabled resident, your bill is charged at one
+  valuation band lower — saving you the cost of a full band.
+canonical: https://www.gloucester.gov.uk/council-tax/discounts/disabled/
+schema_type: GovernmentService
+dateModified: "2026-04-15"
+
 key_badge:
   value: "1 band"
   label: lower charge

@@ -4,6 +4,62 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>{% if title %}{{ title }} — Gloucester City Council{% else %}Gloucester City Council{% endif %}</title>
+
+    {# ── Core identity meta ── #}
+    <meta name="description" content="{{ description if description else summary if summary else 'Official Gloucester City Council information.' }}">
+    <meta name="author" content="Gloucester City Council">
+    <meta name="publisher" content="Gloucester City Council">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+    {# ── Canonical: point to production URL when available ── #}
+    {% if canonical %}
+    <link rel="canonical" href="{{ canonical }}">
+    {% endif %}
+
+    {# ── Open Graph (used by Perplexity, Bing Copilot, ChatGPT Browse) ── #}
+    <meta property="og:title" content="{{ title }} — Gloucester City Council">
+    <meta property="og:description" content="{{ description if description else summary if summary else 'Official information from Gloucester City Council.' }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Gloucester City Council">
+    {% if canonical %}
+    <meta property="og:url" content="{{ canonical }}">
+    {% endif %}
+
+    {# ── JSON-LD structured data ── #}
+    {% if schema_type %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "{{ schema_type }}",
+      "name": "{{ title }}",
+      "description": "{{ description if description else summary }}",
+      "provider": {
+        "@type": "GovernmentOrganization",
+        "name": "Gloucester City Council",
+        "url": "https://www.gloucester.gov.uk",
+        "sameAs": [
+          "https://www.wikidata.org/wiki/Q1247043",
+          "https://en.wikipedia.org/wiki/Gloucester_City_Council"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Eastgate Management Suite, Eastgate Street",
+          "addressLocality": "Gloucester",
+          "postalCode": "GL1 1PA",
+          "addressCountry": "GB"
+        }
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Gloucester",
+        "sameAs": "https://en.wikipedia.org/wiki/Gloucester"
+      }{% if dateModified %},
+      "dateModified": "{{ dateModified }}"{% endif %}{% if canonical %},
+      "url": "{{ canonical }}"{% endif %}
+    }
+    </script>
+    {% endif %}
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">

@@ -9,6 +9,15 @@ summary: >
   depend on your income. They are based entirely on the number and
   circumstances of the people at your home.
 
+# ── AI/SEO signal fields ──
+description: >
+  Council Tax discounts based on who lives at your address in Gloucester.
+  Living alone saves 25%. Students and people in certain circumstances are
+  disregarded, potentially reducing your bill further.
+canonical: https://www.gloucester.gov.uk/council-tax/occupants/
+schema_type: GovernmentService
+dateModified: "2026-04-15"
+
 breadcrumb:
   - url: /council-tax-2/
     label: Council Tax — your guide

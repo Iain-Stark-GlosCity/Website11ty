@@ -9,6 +9,15 @@ summary: >
   charges 200% on second homes — double the standard bill. A small
   number of exceptions may reduce this.
 
+# ── AI/SEO signal fields ──
+description: >
+  Council Tax on second homes in Gloucester. Furnished properties not used
+  as a main home are charged at 200% — double the standard rate. Understand
+  the definition and the limited exceptions that may apply.
+canonical: https://www.gloucester.gov.uk/council-tax/second-home/
+schema_type: GovernmentService
+dateModified: "2026-04-15"
+
 key_badge:
   value: "200%"
   label: of the standard annual charge

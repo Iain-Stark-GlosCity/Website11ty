@@ -20,6 +20,7 @@ module.exports = function (eleventyConfig) {
     "node_modules/govuk-frontend/dist/govuk/assets/images": "assets/images",
   });
   eleventyConfig.addPassthroughCopy("src/assets");
+  eleventyConfig.addPassthroughCopy("src/llms.txt");
 
   // ── Filters ────────────────────────────────────────────────────────
 
@@ -67,6 +68,15 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("capitalize", (str) => {
     if (!str) return "";
     return str.charAt(0).toUpperCase() + str.slice(1);
+  });
+
+  // Returns a date formatted as "yyyy-MM-dd" (or any simple format token).
+  // Primarily used by sitemap.xml.njk.
+  eleventyConfig.addFilter("dateToFormat", (val, format) => {
+    if (!val) return "";
+    const d = toDate(val);
+    if (format === "yyyy-MM-dd") return d.toISOString().slice(0, 10);
+    return d.toISOString();
   });
 
   // ── Provenance section wrapper ─────────────────────────────────────
@@ -119,8 +129,16 @@ module.exports = function (eleventyConfig) {
     )
   );
 
+  // All GCC-template pages (used by sitemap.xml.njk)
+  eleventyConfig.addCollection("gcc", (api) =>
+    api.getFilteredByTag("gcc").filter(
+      (p) => !p.data.publication_gates || p.data.publication_gates.can_publish !== false
+    )
+  );
+
   // ── Global data ────────────────────────────────────────────────────
   eleventyConfig.addGlobalData("currentYear", () => new Date().getFullYear());
+  eleventyConfig.addGlobalData("canonical_base", "https://www.gloucester.gov.uk");
 
   // ── Disable gitignore (src/pages is gitignored but must be processed) ─
   eleventyConfig.setUseGitIgnore(false);
