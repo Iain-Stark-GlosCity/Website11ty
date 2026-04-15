@@ -1,42 +1,55 @@
 ---
 layout: gcc/landing-page.njk
 permalink: /council-tax-2/
-title: Council Tax — property & occupancy
-eyebrow: Council Tax (alternative structure)
+title: Council Tax — your guide
+eyebrow: Council Tax (property & people approach)
 summary: >
-  A different way into Council Tax information — organised around your
-  property and who lives there, rather than by discount type. Use this
-  alongside the main Council Tax section to compare approaches.
+  Council Tax explained around two questions: what is your property
+  situation, and who lives there? Find the section that matches your
+  circumstances and go straight to what matters to you.
 
 breadcrumb: []
 
 actions:
-  - label: My property is empty
-    href: /council-tax-2/empty-home/
-  - label: I have a second home
-    href: /council-tax-2/second-home/
+  - label: Understand your bill
+    href: /council-tax-2/your-bill/
+  - label: Check if you pay less
+    href: /council-tax-2/occupants/
 
 stats:
-  - value: "1 month"
-    label: free before charges begin on an empty home
-  - value: "200%"
-    label: charge on long-term empty homes and second homes
-  - value: "400%"
-    label: maximum charge after 10 years empty
+  - value: "8"
+    label: valuation bands, A to H
+  - value: "25%"
+    label: off if you live alone
+  - value: "0%"
+    label: if everyone at home is a full-time student
 
-cards_heading: Your situation
+cards_heading: Where do you want to start?
 
 cards:
+  - title: Understanding your bill
+    href: /council-tax-2/your-bill/
+    summary: >
+      What your annual charge is, how it is split between Gloucester City
+      Council, the county, police, fire, and — if you are in Quedgeley — the
+      parish. Plus how to find and challenge your band.
+  - title: Discounts based on who lives with you
+    href: /council-tax-2/occupants/
+    summary: >
+      Whether you live alone, share with students, or someone at your
+      address is disregarded — find out if your bill should be lower
+      and how to claim it.
   - title: My property is empty
     href: /council-tax-2/empty-home/
     summary: >
-      What you owe from the day a property becomes vacant through to long-term empty
-      premiums — and what happens in special circumstances like probate, renovation, or care.
+      What you owe from the day a property becomes vacant through to the
+      long-term empty premium — with scenario guidance for selling,
+      probate, renovation, and care placements.
   - title: I have a second home
     href: /council-tax-2/second-home/
     summary: >
-      The 200% charge on furnished properties that aren't anyone's main home, the
-      legal definition of a second home, and the narrow exceptions that may reduce your bill.
+      The 200% charge on furnished properties that are not anyone's
+      main home, the legal definition, and the narrow exceptions.
 
 tags:
   - gcc
