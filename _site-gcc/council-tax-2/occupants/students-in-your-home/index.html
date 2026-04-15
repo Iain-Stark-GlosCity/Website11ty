@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Student exemption — Gloucester City Council</title>
+    <title>Students in your home — Gloucester City Council</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -22,15 +22,15 @@
     <meta name="provenance:source:0:document" content="facts">
     <meta name="provenance:source:0:hash"     content="sha256:f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2">
   
-    <meta name="provenance:source:1:id"       content="ctax/rules@2.4.0+2.2:/executable_rule_slices/rules[rule_id=rule.exemption.student_household]#d4e5f6a7">
+    <meta name="provenance:source:1:id"       content="ctax/rules@2.4.0+2.2:/rule_sets/disregard_rules[rule_id=full-time-students]#b2c3d4e5">
     <meta name="provenance:source:1:role"     content="implementing_logic">
     <meta name="provenance:source:1:document" content="rules">
-    <meta name="provenance:source:1:hash"     content="sha256:d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5">
+    <meta name="provenance:source:1:hash"     content="sha256:b2c3d4e5f67890abcdef1234567890abcdef1234567890abcdef1234567890ab">
   
-    <meta name="provenance:source:2:id"       content="ctax/rules@2.4.0+2.2:/rule_sets/disregard_rules[rule_id=full-time-students]#b2c3d4e5">
+    <meta name="provenance:source:2:id"       content="ctax/rules@2.4.0+2.2:/executable_rule_slices/rules[rule_id=rule.discount.single_person]#a1b2c3d4">
     <meta name="provenance:source:2:role"     content="cross_reference">
     <meta name="provenance:source:2:document" content="rules">
-    <meta name="provenance:source:2:hash"     content="sha256:b2c3d4e5f67890abcdef1234567890abcdef1234567890abcdef1234567890ab">
+    <meta name="provenance:source:2:hash"     content="sha256:a1b2c3d4e5f67890abcdef1234567890abcdef1234567890abcdef1234567890">
   
     <meta name="provenance:source:3:id"       content="ctax/taxonomy@2.4.0+2.2:/mechanisms[id=exemption]#c3d4e5f6">
     <meta name="provenance:source:3:role"     content="vocabulary">
@@ -55,11 +55,11 @@
   
     <link rel="source:implementing-logic"
           type="application/json"
-          href="https://func-mpc-poc.azurewebsites.net/api/mcp-schema?document=rules&path=%2Fexecutable_rule_slices%2Frules%5Brule_id%3Drule.exemption.student_household%5D">
+          href="https://func-mpc-poc.azurewebsites.net/api/mcp-schema?document=rules&path=%2Frule_sets%2Fdisregard_rules%5Brule_id%3Dfull-time-students%5D">
   
     <link rel="source:cross-reference"
           type="application/json"
-          href="https://func-mpc-poc.azurewebsites.net/api/mcp-schema?document=rules&path=%2Frule_sets%2Fdisregard_rules%5Brule_id%3Dfull-time-students%5D">
+          href="https://func-mpc-poc.azurewebsites.net/api/mcp-schema?document=rules&path=%2Fexecutable_rule_slices%2Frules%5Brule_id%3Drule.discount.single_person%5D">
   
     <link rel="source:vocabulary"
           type="application/json"
@@ -117,13 +117,13 @@
           
             <li>
               
-                <a href="/council-tax/">Council Tax</a>
+                <a href="/council-tax-2/">Council Tax — your guide</a>
               
             </li>
           
             <li>
               
-                Discounts
+                Who lives with you
               
             </li>
           
@@ -132,16 +132,11 @@
     
     <div class="gcc-page-header__inner">
       <div>
-        <span class="gcc-eyebrow">Council Tax discounts</span>
-        <h1 class="gcc-page-header__title">Student exemption</h1>
-        <p class="gcc-lead">Properties occupied only by full-time students are completely exempt from Council Tax. Individual full-time students living with non-students are disregarded when counting adults — which may entitle you to Single Person Discount.
+        <span class="gcc-eyebrow">Discounts based on who lives with you</span>
+        <h1 class="gcc-page-header__title">Students in your home</h1>
+        <p class="gcc-lead">Whether you are a student yourself or you share with students, the rules could significantly reduce — or completely remove — your Council Tax bill. The outcome depends on who lives there and what their student status is.
 </p>
       </div>
-      
-        <div class="gcc-key-badge" aria-label="exempt if all students">
-          <span class="gcc-key-badge__value">100%</span>
-          <span class="gcc-key-badge__label">exempt if all students</span>
-        </div>
       
     </div>
   </div>
@@ -157,111 +152,75 @@
       
 
       <div class="gcc-prose">
-        <section data-provenance="ctax/facts@2.4.0+2.2:/adjustment_catalogue/exemptions/items/student_household#eligibility#f1a2b3c4">
+        <section data-provenance="ctax/facts@2.4.0+2.2:/adjustment_catalogue/exemptions/items/student_household#your_situation#f1a2b3c4">
 
-<h2>Who qualifies</h2>
-<p>A property is <strong>fully exempt</strong> from Council Tax when everyone living there as their main residence is a full-time student. There is no charge at all — you do not need to pay anything for the period the property is occupied exclusively by students.</p>
-<div class="gcc-callout gcc-callout--info">
-  <span class="gcc-callout__icon" aria-hidden="true">ℹ</span>
+<h2>What is your situation?</h2>
+<p>The rules work differently depending on who lives at your address. Find your situation below.</p>
+<h3>Everyone at the address is a full-time student</h3>
+<p><strong>Your bill: £0</strong> — the property is fully exempt from Council Tax.</p>
+<p>A property occupied only by full-time students pays nothing. The exemption applies for as long as the property is occupied exclusively by qualifying students — including during term-time vacations, as long as the property remains the students' main residence.</p>
+<div class="gcc-callout gcc-callout--success">
+  <span class="gcc-callout__icon" aria-hidden="true">✓</span>
   <div class="gcc-callout__body">
-    <p><strong>Mixed households.</strong> If you share with someone who is not a student, the property is not exempt — but each full-time student is <strong>disregarded</strong> when counting adults. If only one non-student adult remains after disregards, they may qualify for <a href="/council-tax/discounts/single-person/">Single Person Discount</a>.</p>
+    <p><strong>This applies even if you are renting from a private landlord.</strong> The exemption belongs to the occupants, not the building. As long as every resident aged 18 or over is a qualifying full-time student, there is no bill.</p>
   </div>
 </div>
-<h3>What counts as a full-time student</h3>
-<p>To qualify you must be:</p>
-<ul>
-<li>Enrolled on a <strong>full-time course</strong> at a university, college, or other educational institution</li>
-<li>On a course that lasts at least <strong>one academic or calendar year</strong> and involves at least <strong>21 hours of study per week</strong> during term time</li>
-</ul>
-<p>The following also count as full-time students for Council Tax purposes:</p>
-<ul>
-<li><strong>Student nurses</strong> on an NHS-funded course at a college or university</li>
-<li><strong>Apprentices</strong> on a Government-approved scheme who earn less than £195 per week (gross) and whose course leads to a qualification at least equivalent to NVQ Level 3</li>
-<li><strong>Youth training trainees</strong> aged under 25</li>
-</ul>
+<h3>You are the only non-student adult</h3>
+<p><strong>Your bill: 75% of the standard charge</strong> (you get 25% Single Person Discount).</p>
+<p>Students living with you are disregarded — they do not count in the adult total. If the count after excluding students is exactly one (you), you receive <a href="/council-tax-2/occupants/living-alone/">Single Person Discount</a>.</p>
+<p><strong>Example:</strong> You share a house with two full-time students. After disregarding both students, the adult count is 1 — you. Your bill is 75% of the Band D charge (£1,761.13 per year outside Quedgeley).</p>
+<h3>There are two or more non-student adults</h3>
+<p><strong>Your bill: the full standard charge.</strong></p>
+<p>Once there are two or more adults who are not disregarded, no occupant-based discount applies. The students are still invisible in the count — but with two counted adults remaining, no reduction is triggered.</p>
+<p><strong>Example:</strong> You and your partner share with a student. After disregarding the student, the count is 2. Full charge applies.</p>
+<h3>You are a student and you live with non-students</h3>
+<p><strong>Your bill: depends on the non-students only.</strong></p>
+<p>You are disregarded. The bill is calculated as if you are not there. If only one non-student adult remains after all disregards, they get 25% off. If two or more non-students remain, full charge applies. You are not liable for Council Tax yourself while you are a full-time student.</p>
 </section>
 <section data-provenance="ctax/rules@2.4.0+2.2:/rule_sets/disregard_rules[rule_id=full-time-students]#b2c3d4e5">
 
-<h3>Student certificates</h3>
-<p>To claim the exemption or disregard, we will need a <strong>student certificate</strong> issued by your college or university. The certificate must confirm:</p>
+<h2>Who counts as a full-time student?</h2>
+<p>To be disregarded, a student must be enrolled on a course that is:</p>
 <ul>
-<li>Your name</li>
-<li>The name of the institution</li>
-<li>The course name and level</li>
-<li>The start and expected end date of the course</li>
-<li>That you are a full-time student</li>
+<li>At least <strong>one academic or calendar year</strong> in duration</li>
+<li>Requiring at least <strong>21 hours of study per week</strong> during term time</li>
 </ul>
-<p>Most institutions issue these automatically at the start of term. Ask your student services office if yours has not been issued.</p>
+<p>These also qualify:</p>
+<ul>
+<li><strong>Student nurses</strong> on NHS-funded college or university courses</li>
+<li><strong>Apprentices</strong> on government-approved schemes earning under £195 per week gross, working towards at least NVQ Level 3</li>
+<li><strong>Youth training trainees</strong> aged under 25</li>
+</ul>
+<p>Part-time students do not qualify — they count as adults.</p>
+<h3>How we verify it</h3>
+<p>We need a <strong>student certificate</strong> from your college or university. It must confirm your name, institution, course, and the start and expected end dates. Most institutions issue these at the start of term. Ask your student services office if you have not received one.</p>
 </section>
 <section data-provenance="ctax/facts@2.4.0+2.2:/adjustment_catalogue/exemptions/items/student_household#vacation_rules#f1a2b3c4">
 
-<h2>Vacations and gaps in study</h2>
-<p>The exemption continues during <strong>short vacations</strong> (summer, Christmas, Easter) as long as:</p>
+<h2>Vacations and temporary absence</h2>
+<p>The exemption and disregards continue during <strong>short vacations</strong> (summer, Christmas, Easter) if:</p>
 <ul>
-<li>The property is still the student's main residence</li>
+<li>The property remains the student's main residence</li>
 <li>The student intends to return at the start of the next term</li>
 </ul>
-<p>If a student <strong>permanently leaves</strong> before the end of their course — whether through finishing early, deferring, or withdrawing — the exemption ends on the date they leave. Tell us within 21 days if this happens.</p>
+<p>If a student <strong>permanently leaves</strong> — by finishing, deferring, or withdrawing — the exemption or disregard ends on their leaving date. You must tell us within 21 days.</p>
 <div class="gcc-callout gcc-callout--warning">
   <span class="gcc-callout__icon" aria-hidden="true">⚠</span>
   <div class="gcc-callout__body">
-    <p><strong>Gap years and interruptions.</strong> If a student takes a gap year or interrupts their studies, they may no longer qualify during that period. Contact us to check whether the exemption can continue.</p>
+    <p><strong>Gap years.</strong> A student on a gap year or approved interruption of study may no longer qualify during that period. Contact us to check — rules vary depending on the institution's classification of the break.</p>
   </div>
 </div>
-<h2>How to apply</h2>
 </section>
 <section data-provenance="ctax/facts@2.4.0+2.2:/adjustment_catalogue/exemptions/items/student_household#application_process#f1a2b3c4">
 
-<p>You can apply in two ways:</p>
-<p><strong>Online — fastest</strong></p>
-<p>Sign in to your <a href="https://gloucester-self.achieveservice.com/">My Gloucester account</a> and select <em>Apply for student exemption</em> in the Council Tax section. Upload your student certificate during the application.</p>
-<p><strong>By post or email</strong></p>
-<p>Send a copy of your student certificate to <strong>revenues@gloucester.gov.uk</strong> or to Gloucester City Revenues &amp; Benefits, Eastgate Management Suite, Eastgate Street, Gloucester GL1 1PA. Include your Council Tax account number.</p>
-<div class="gcc-callout gcc-callout--neutral">
-  <span class="gcc-callout__icon" aria-hidden="true">📋</span>
-  <div class="gcc-callout__body">
-    <p>If you are moving into a new property that is entirely occupied by students, apply as soon as you move in. The exemption runs from the date of your application or the date the property became fully student-occupied, whichever is later.</p>
-  </div>
-</div>
-<h2>If your circumstances change</h2>
-</section>
-<section data-provenance="ctax/facts@2.4.0+2.2:/adjustment_catalogue/exemptions/items/student_household#change_in_circumstances#f1a2b3c4">
-
-<p>You must tell us within <strong>21 days</strong> if:</p>
-<ul>
-<li>A student at your property finishes or interrupts their course</li>
-<li>Someone moves in who is not a full-time student</li>
-<li>You move out</li>
-</ul>
-<p>The easiest way to report a change is through your My Gloucester account. You can also email <strong>revenues@gloucester.gov.uk</strong>.</p>
-<p>Failure to notify us may result in backdated Council Tax charges and a penalty of up to <strong>£70</strong>.</p>
-</section>
-<section data-provenance="ctax/rules@2.4.0+2.2:/executable_rule_slices/rules[rule_id=rule.exemption.student_household]#d4e5f6a7">
-
-<h2>How we work it out</h2>
-<ol>
-<li>We check whether <strong>every person aged 18 or over</strong> at the property is a qualifying full-time student.</li>
-<li>If yes, the property is <strong>Class N exempt</strong> — zero charge applies.</li>
-<li>If one or more adults are not students, we count the non-student adults, <strong>excluding anyone else who is disregarded</strong> (for example, a person with a severe mental impairment).</li>
-<li>If only <strong>one non-student adult</strong> remains, <a href="/council-tax/discounts/single-person/">Single Person Discount</a> (25% off) applies to their bill.</li>
-</ol>
-</section>
-<section data-provenance="ctax/facts@2.4.0+2.2:/adjustment_catalogue/exemptions/items/student_household#legal_basis#f1a2b3c4">
-
+<h2>How to apply</h2>
+<p><strong>Online:</strong> Sign in to <a href="https://gloucester-self.achieveservice.com/">My Gloucester</a> and apply via the Council Tax section. Upload the student certificate during the application.</p>
+<p><strong>By email:</strong> Send the student certificate to <strong>revenues@gloucester.gov.uk</strong> with your Council Tax account number. If applying for a full exemption, include certificates for every student at the address.</p>
+<p>If your household recently became fully student-occupied (for example, a non-student flatmate moved out), apply straight away. We can apply the exemption from the date the last non-student left.</p>
+<h2>If a student moves out — or a non-student moves in</h2>
+<p>Tell us within <strong>21 days</strong>. The exemption or disregard ends on that date, and the standard charge (or reduced charge) begins. Failure to notify us may result in a backdated bill and a penalty of up to <strong>£70</strong>.</p>
 <h2>The law behind this</h2>
-<p>Student exemptions are set out in the <strong>Council Tax (Exempt Dwellings) Order 1992 (SI 1992/558)</strong>, Class N. The disregard for individual full-time students is in <strong>Schedule 1 of the Local Government Finance Act 1992</strong>, paragraph 4. Both are statutory — every council in England must apply them.</p>
-<h2>Other discounts that may apply</h2>
-<ul>
-<li><a href="/council-tax/discounts/single-person/">Single Person Discount</a> — 25% off if one non-student adult remains after disregards</li>
-<li><a href="/council-tax/council-tax-support/">Council Tax Support</a> — income-related help if you are on a low income</li>
-<li><a href="/council-tax/discounts/disabled/">Disabled person reduction</a> — if your home has been adapted for a disabled resident</li>
-</ul>
-<h2>Contact us</h2>
-<ul>
-<li><strong>Phone:</strong> 01452 396 396 (Monday–Friday 9am–5pm, Wednesday from 10am)</li>
-<li><strong>Email:</strong> revenues@gloucester.gov.uk</li>
-<li><strong>Online:</strong> <a href="https://gloucester-self.achieveservice.com/">My Gloucester account</a></li>
-</ul>
+<p>The full exemption for student households is <strong>Class N</strong> of the <strong>Council Tax (Exempt Dwellings) Order 1992</strong>. The disregard for individual full-time students is in <strong>Schedule 1, paragraph 4 of the Local Government Finance Act 1992</strong>.</p>
 </section>
 
       </div>
@@ -279,17 +238,15 @@
           <div class="gcc-sidebar-card__body">
             <ul class="gcc-related-list" role="list">
               
-                <li><a href="/council-tax/discounts/">Discounts</a></li>
+                <li><a href="/council-tax-2/occupants/">Occupants</a></li>
               
-                <li><a href="/council-tax/discounts/single-person/">Single Person</a></li>
+                <li><a href="/council-tax-2/occupants/living-alone/">Living Alone</a></li>
               
-                <li><a href="/council-tax/discounts/disabled/">Disabled</a></li>
+                <li><a href="/council-tax-2/occupants/someone-doesnt-count/">Someone Doesnt Count</a></li>
               
-                <li><a href="/council-tax/discounts/mental-impairment/">Mental Impairment</a></li>
+                <li><a href="/council-tax-2/your-bill/">Your Bill</a></li>
               
-                <li><a href="/council-tax/discounts/empty-properties/">Empty Properties</a></li>
-              
-                <li><a href="/council-tax/council-tax-support/">Council Tax Support</a></li>
+                <li><a href="/council-tax/discounts/students/">Students</a></li>
               
             </ul>
           </div>
@@ -339,18 +296,18 @@
                 <td>Implementing logic</td>
                 <td>
                   <code>rules</code><br>
-                  <code>/executable_rule_slices/rules[rule_id=rule.exemption.student_household]</code>
+                  <code>/rule_sets/disregard_rules[rule_id=full-time-students]</code>
                 </td>
-                <td><code>sha256:d4e5f6a7b8c9d0…</code></td>
+                <td><code>sha256:b2c3d4e5f67890…</code></td>
               </tr>
             
               <tr>
                 <td>Cross reference</td>
                 <td>
                   <code>rules</code><br>
-                  <code>/rule_sets/disregard_rules[rule_id=full-time-students]</code>
+                  <code>/executable_rule_slices/rules[rule_id=rule.discount.single_person]</code>
                 </td>
-                <td><code>sha256:b2c3d4e5f67890…</code></td>
+                <td><code>sha256:a1b2c3d4e5f678…</code></td>
               </tr>
             
               <tr>
