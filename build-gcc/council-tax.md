@@ -8,6 +8,15 @@ summary: >
   your bill, apply for discounts, report changes, and get support if
   you're struggling to pay.
 
+# ── AI/SEO signal fields ──
+description: >
+  Official Gloucester City Council Council Tax service. Pay your bill,
+  apply for discounts, report changes, and get support. Band D charge
+  £2,348 for 2026/27.
+canonical: https://www.gloucester.gov.uk/council-tax/
+schema_type: GovernmentService
+dateModified: "2026-04-15"
+
 actions:
   - label: Pay your bill
     href: /council-tax/pay/

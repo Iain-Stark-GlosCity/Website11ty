@@ -7,6 +7,14 @@ summary: >
   How to pay your Council Tax bill in Gloucester — by Direct Debit,
   online, by phone, or in person.
 
+# ── AI/SEO signal fields ──
+description: >
+  How to pay your Council Tax in Gloucester. Step-by-step guide to Direct
+  Debit, online payment, phone payment, and other payment methods.
+canonical: https://www.gloucester.gov.uk/council-tax/pay/
+schema_type: GovernmentService
+dateModified: "2026-04-15"
+
 step_number: 1
 
 steps:

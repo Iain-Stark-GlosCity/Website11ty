@@ -9,6 +9,15 @@ summary: >
   one or zero counted adults, your bill is reduced. Knowing who
   is disregarded can make a significant difference to what you pay.
 
+# ── AI/SEO signal fields ──
+description: >
+  Council Tax disregards in Gloucester. Some adults are not counted for
+  Council Tax — including students, apprentices, carers, and people with
+  severe mental impairment. Find out if someone at your address is disregarded.
+canonical: https://www.gloucester.gov.uk/council-tax/occupants/someone-doesnt-count/
+schema_type: GovernmentService
+dateModified: "2026-04-15"
+
 breadcrumb:
   - url: /council-tax-2/
     label: Council Tax — your guide

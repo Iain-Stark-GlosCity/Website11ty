@@ -7,6 +7,14 @@ summary: >
   Find council services, pay bills, apply for permits, and get support
   from Gloucester City Council — all in one place.
 
+# ── AI/SEO signal fields ──
+description: >
+  Official website of Gloucester City Council. Pay Council Tax, apply for
+  planning permission, report issues, and access all local services online.
+canonical: https://www.gloucester.gov.uk/
+schema_type: GovernmentService
+dateModified: "2026-04-15"
+
 actions:
   - label: Pay Council Tax
     href: /council-tax/pay/

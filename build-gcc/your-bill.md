@@ -9,6 +9,15 @@ summary: >
   paying, why there are two different rates in Gloucester, and what
   to do if you think your band is wrong.
 
+# ── AI/SEO signal fields ──
+description: >
+  How Gloucester Council Tax bills are calculated for 2026/27. Band D:
+  £2,348.17 in Gloucester, £2,393.05 in Quedgeley. See the full breakdown
+  between city, county, police, and fire services.
+canonical: https://www.gloucester.gov.uk/council-tax/your-bill/
+schema_type: GovernmentService
+dateModified: "2026-04-15"
+
 breadcrumb:
   - url: /council-tax-2/
     label: Council Tax — your guide

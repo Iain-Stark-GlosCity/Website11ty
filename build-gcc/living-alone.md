@@ -9,6 +9,15 @@ summary: >
   Single Person Discount. It is a legal right — not means-tested,
   not discretionary. If you qualify, you must receive it.
 
+# ── AI/SEO signal fields ──
+description: >
+  Single Person Discount for Gloucester residents. If you are the only adult
+  at your address you are entitled to 25% off your Council Tax. Find out if
+  you qualify and how to claim.
+canonical: https://www.gloucester.gov.uk/council-tax/occupants/living-alone/
+schema_type: GovernmentService
+dateModified: "2026-04-15"
+
 key_badge:
   value: "25%"
   label: off your annual bill

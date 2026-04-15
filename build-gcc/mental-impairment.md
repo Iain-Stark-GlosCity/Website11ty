@@ -9,6 +9,15 @@ summary: >
   disregarded, the bill can be reduced by 25% — or more, depending on
   who lives there.
 
+# ── AI/SEO signal fields ──
+description: >
+  Council Tax disregard for severe mental impairment in Gloucester. People
+  with a severe mental impairment are not counted as adults for Council Tax,
+  which can reduce your bill by 25% or more.
+canonical: https://www.gloucester.gov.uk/council-tax/discounts/mental-impairment/
+schema_type: GovernmentService
+dateModified: "2026-04-15"
+
 breadcrumb:
   - url: /council-tax/
     label: Council Tax

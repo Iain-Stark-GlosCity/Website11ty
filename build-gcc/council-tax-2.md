@@ -8,6 +8,16 @@ summary: >
   situation, and who lives there? Find the section that matches your
   circumstances and go straight to what matters to you.
 
+# ── AI/SEO signal fields ──
+description: >
+  Official Gloucester City Council guide to Council Tax for Gloucester
+  residents. Covers valuation bands A to H, the 25% single person
+  discount, student exemptions, empty property rules, and second home
+  charges.
+canonical: https://www.gloucester.gov.uk/council-tax/
+schema_type: GovernmentService
+dateModified: "2026-04-15"
+
 breadcrumb: []
 
 actions:

@@ -8,6 +8,15 @@ summary: >
   The type of discount depends on who lives in your property and your
   personal circumstances.
 
+# ── AI/SEO signal fields ──
+description: >
+  Find Council Tax discounts and exemptions in Gloucester. Includes Single
+  Person Discount (25% off), full student exemption (100% off), disabled
+  person reduction, and empty property rules.
+canonical: https://www.gloucester.gov.uk/council-tax/discounts/
+schema_type: GovernmentService
+dateModified: "2026-04-15"
+
 breadcrumb:
   - url: /council-tax/
     label: Council Tax

@@ -8,6 +8,14 @@ summary: >
   your Council Tax bill. There's no income test — it's purely based
   on who lives with you.
 
+# ── AI/SEO signal fields ──
+description: >
+  Claim Single Person Discount in Gloucester — 25% off your Council Tax
+  if you are the only adult at your address. No income test, no means test.
+canonical: https://www.gloucester.gov.uk/council-tax/discounts/single-person/
+schema_type: GovernmentService
+dateModified: "2026-04-15"
+
 key_badge:
   value: "25%"
   label: off your annual bill

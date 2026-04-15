@@ -9,6 +9,15 @@ summary: >
   are disregarded when counting adults — which may entitle you to Single
   Person Discount.
 
+# ── AI/SEO signal fields ──
+description: >
+  Student Council Tax exemption in Gloucester. Properties with only
+  full-time students are 100% exempt. Individual students in mixed
+  households are disregarded in the adult count.
+canonical: https://www.gloucester.gov.uk/council-tax/discounts/students/
+schema_type: GovernmentService
+dateModified: "2026-04-15"
+
 key_badge:
   value: "100%"
   label: exempt if all students

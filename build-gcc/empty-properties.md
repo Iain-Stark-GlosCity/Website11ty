@@ -9,6 +9,15 @@ summary: >
   properties are now charged the full rate — and long-term empties attract
   a significant premium.
 
+# ── AI/SEO signal fields ──
+description: >
+  Council Tax on empty and second homes in Gloucester. Most empty properties
+  are charged the full rate. Long-term empty properties attract a premium
+  of up to 200%; second homes are also charged 200%.
+canonical: https://www.gloucester.gov.uk/council-tax/discounts/empty-properties/
+schema_type: GovernmentService
+dateModified: "2026-04-15"
+
 breadcrumb:
   - url: /council-tax/
     label: Council Tax
