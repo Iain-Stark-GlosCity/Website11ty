@@ -60,6 +60,29 @@ cards:
     summary: >
       The 200% charge on furnished properties that are not anyone's
       main home, the legal definition, and the narrow exceptions.
+  - title: Moving in or moving out
+    href: /council-tax-2/moving/
+    summary: >
+      When your Council Tax liability starts and ends, who is liable
+      at a shared property, and how to tell us about a move within
+      21 days.
+  - title: I am struggling to pay
+    href: /council-tax-2/struggling-to-pay/
+    summary: >
+      Every option from checking your discounts to Breathing Space
+      debt protection — in the order you should consider them.
+      Contact us before you miss a payment.
+  - title: Disabled Band Reduction
+    href: /council-tax-2/disabled-band-reduction/
+    summary: >
+      Pay one band lower if your home has been adapted for a disabled
+      person. Saves over £260 a year for most households. Applied
+      before any other discount.
+  - title: Care leavers — 100% off
+    href: /council-tax-2/care-leavers/
+    summary: >
+      If you are aged 18 to 24 and were previously in care of any
+      English local authority, you may pay nothing at all.
 
 tags:
   - gcc
