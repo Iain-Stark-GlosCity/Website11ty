@@ -37,6 +37,12 @@ stats:
 cards_heading: Where do you want to start?
 
 cards:
+  - title: Moving in or moving out
+    href: /council-tax-2/moving/
+    summary: >
+      When your Council Tax liability starts and ends, who is liable
+      at a shared property, and how to tell us about a move within
+      21 days.
   - title: Understanding your bill
     href: /council-tax-2/your-bill/
     summary: >
@@ -49,6 +55,17 @@ cards:
       Whether you live alone, share with students, or someone at your
       address is disregarded — find out if your bill should be lower
       and how to claim it.
+  - title: I am struggling to pay
+    href: /council-tax-2/struggling-to-pay/
+    summary: >
+      Every option from checking your discounts to Breathing Space
+      debt protection — in the order you should consider them.
+      Contact us before you miss a payment.
+  - title: Council Tax Support — help with your bill
+    href: /council-tax-2/council-tax-support/
+    summary: >
+      Income-based reduction of up to 100%. In Gloucester, 83% of
+      recipients pay nothing at all. Apply online — it takes minutes.
   - title: My property is empty
     href: /council-tax-2/empty-home/
     summary: >
@@ -60,29 +77,17 @@ cards:
     summary: >
       The 200% charge on furnished properties that are not anyone's
       main home, the legal definition, and the narrow exceptions.
-  - title: Moving in or moving out
-    href: /council-tax-2/moving/
-    summary: >
-      When your Council Tax liability starts and ends, who is liable
-      at a shared property, and how to tell us about a move within
-      21 days.
-  - title: I am struggling to pay
-    href: /council-tax-2/struggling-to-pay/
-    summary: >
-      Every option from checking your discounts to Breathing Space
-      debt protection — in the order you should consider them.
-      Contact us before you miss a payment.
-  - title: Disabled Band Reduction
+  - title: My home is adapted for a disabled person
     href: /council-tax-2/disabled-band-reduction/
     summary: >
-      Pay one band lower if your home has been adapted for a disabled
-      person. Saves over £260 a year for most households. Applied
-      before any other discount.
-  - title: Care leavers — 100% off
+      Pay one band lower if your home has a qualifying adaptation.
+      Saves over £260 a year for most households, applied before
+      any other discount.
+  - title: I am a care leaver aged 18 to 24
     href: /council-tax-2/care-leavers/
     summary: >
-      If you are aged 18 to 24 and were previously in care of any
-      English local authority, you may pay nothing at all.
+      If you were previously in care of any English local authority
+      and live in Gloucester, you may pay nothing at all.
 
 tags:
   - gcc

@@ -93,7 +93,7 @@ related_pages:
   - /council-tax-2/struggling-to-pay/
   - /council-tax-2/occupants/living-alone/
   - /council-tax-2/your-bill/
-  - /council-tax/council-tax-support/
+  - /council-tax-2/council-tax-support/
 ---
 
 <!-- provenance: ctax/facts@2.5.7+2.5:/adjustment_catalogue/discounts/items[id=care-leavers]#eligibility#b1c2d3e4 -->

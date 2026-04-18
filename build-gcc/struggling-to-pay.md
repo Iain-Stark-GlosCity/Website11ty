@@ -110,7 +110,7 @@ tags:
   - council-tax-2
 
 related_pages:
-  - /council-tax/council-tax-support/
+  - /council-tax-2/council-tax-support/
   - /council-tax-2/occupants/living-alone/
   - /council-tax-2/disabled-band-reduction/
   - /council-tax-2/care-leavers/

@@ -101,7 +101,7 @@ related_pages:
   - /council-tax-2/occupants/someone-doesnt-count/
   - /council-tax-2/your-bill/
   - /council-tax-2/struggling-to-pay/
-  - /council-tax/discounts/disabled-reduction/
+  - /council-tax-2/council-tax-support/
 ---
 
 <!-- provenance: ctax/facts@2.5.7+2.5:/adjustment_catalogue/discounts/items[id=disabled-band-reduction]#what_it_is#a9b8c7d6 -->

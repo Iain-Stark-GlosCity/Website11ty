@@ -101,7 +101,7 @@ related_pages:
   - /council-tax-2/occupants/
   - /council-tax-2/empty-home/
   - /council-tax-2/second-home/
-  - /council-tax/pay/
+  - /council-tax-2/struggling-to-pay/
 ---
 
 <!-- provenance: ctax/facts@2.5.7+2.5:/charge_schedule/valuation_and_charging/valuation_bands/rate_history[financial_year=2026_27]#what_it_is#a1b2c3d4 -->

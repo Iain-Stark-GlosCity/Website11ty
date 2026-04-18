@@ -109,7 +109,7 @@ related_pages:
   - /council-tax-2/occupants/living-alone/
   - /council-tax-2/occupants/students-in-your-home/
   - /council-tax-2/your-bill/
-  - /council-tax/discounts/mental-impairment/
+  - /council-tax-2/disabled-band-reduction/
 ---
 
 <!-- provenance: ctax/facts@2.5.7+2.5:/adjustment_catalogue/discounts/items#what_is_a_disregard#d5e6f7a8 -->

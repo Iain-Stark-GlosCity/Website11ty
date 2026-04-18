@@ -110,7 +110,7 @@ related_pages:
   - /council-tax-2/occupants/living-alone/
   - /council-tax-2/occupants/someone-doesnt-count/
   - /council-tax-2/your-bill/
-  - /council-tax/discounts/students/
+  - /council-tax-2/moving/
 ---
 
 <!-- provenance: ctax/facts@2.5.7+2.5:/adjustment_catalogue/exemptions/items[id=class-n]#your_situation#f1a2b3c4 -->

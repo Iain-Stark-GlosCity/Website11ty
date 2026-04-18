@@ -2,7 +2,7 @@
 layout: gcc/policy-page.njk
 permalink: /council-tax-2/moving/
 title: Moving in or moving out
-eyebrow: Council Tax — your guide
+eyebrow: Property & occupancy
 summary: >
   Council Tax follows you from address to address. When you move in,
   you become liable from day one. When you move out, you are liable

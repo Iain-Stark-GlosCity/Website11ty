@@ -105,7 +105,7 @@ related_pages:
   - /council-tax-2/occupants/someone-doesnt-count/
   - /council-tax-2/occupants/students-in-your-home/
   - /council-tax-2/your-bill/
-  - /council-tax/discounts/single-person/
+  - /council-tax-2/struggling-to-pay/
 ---
 
 <!-- provenance: ctax/facts@2.5.7+2.5:/adjustment_catalogue/discounts/items[id=single-person-discount]#eligibility#8311bd27 -->
