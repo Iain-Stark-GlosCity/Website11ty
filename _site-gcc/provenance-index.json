@@ -1,15 +1,59 @@
 {
   "schema_version": "2",
-  "generated_at": "2026-04-15T07:59:31.375Z",
+  "generated_at": "2026-04-18T11:55:05.641Z",
   "site_url": "https://www.gloucester.gov.uk",
   "packs": {
     "ctax": {
-      "version": "2.4.0",
+      "version": "2.5.7",
       "documents": {
         "facts": {
-          "version": "2.2",
+          "version": "2.5",
           "records": {
-            "/adjustment_catalogue/empty_property/items/vacant_unfurnished": {
+            "/adjustment_catalogue/discounts/items[id=care-leavers]": {
+              "hash_at_generation": "sha256:b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2",
+              "pages": [
+                {
+                  "url": "/council-tax-2/care-leavers/",
+                  "role": "primary"
+                }
+              ]
+            },
+            "/adjustment_catalogue/council_tax_support": {
+              "hash_at_generation": "sha256:f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6",
+              "pages": [
+                {
+                  "url": "/council-tax-2/council-tax-support/",
+                  "role": "primary"
+                },
+                {
+                  "url": "/council-tax-2/struggling-to-pay/",
+                  "role": "primary"
+                }
+              ]
+            },
+            "/adjustment_catalogue/discounts/items[id=disabled-band-reduction]": {
+              "hash_at_generation": "sha256:a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8",
+              "pages": [
+                {
+                  "url": "/council-tax-2/disabled-band-reduction/",
+                  "role": "primary"
+                }
+              ]
+            },
+            "/charge_schedule/valuation_and_charging/valuation_bands/rate_history[financial_year=2026_27]": {
+              "hash_at_generation": "sha256:a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2",
+              "pages": [
+                {
+                  "url": "/council-tax-2/disabled-band-reduction/",
+                  "role": "supporting"
+                },
+                {
+                  "url": "/council-tax-2/your-bill/",
+                  "role": "primary"
+                }
+              ]
+            },
+            "/adjustment_catalogue/property_premiums/empty_homes_premium": {
               "hash_at_generation": "sha256:e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2",
               "pages": [
                 {
@@ -18,20 +62,34 @@
                 }
               ]
             },
-            "/adjustment_catalogue/discounts/items/0": {
+            "/adjustment_catalogue/discounts/items[id=unoccupied-unfurnished]": {
+              "hash_at_generation": "sha256:e1f2a3b5c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f3",
+              "pages": [
+                {
+                  "url": "/council-tax-2/empty-home/",
+                  "role": "supporting"
+                }
+              ]
+            },
+            "/adjustment_catalogue/discounts/items[id=single-person-discount]": {
               "hash_at_generation": "sha256:8311bd2784917185589bec55fe31a26e44a81f0b9fe33b91c951a5a63bee6462",
               "pages": [
                 {
                   "url": "/council-tax-2/occupants/living-alone/",
                   "role": "primary"
-                },
+                }
+              ]
+            },
+            "/operational_facts/liability": {
+              "hash_at_generation": "sha256:c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3",
+              "pages": [
                 {
-                  "url": "/council-tax/discounts/single-person/",
+                  "url": "/council-tax-2/moving/",
                   "role": "primary"
                 }
               ]
             },
-            "/adjustment_catalogue/premiums_and_discounts/items/second_home": {
+            "/adjustment_catalogue/property_premiums/second_homes_premium": {
               "hash_at_generation": "sha256:f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3",
               "pages": [
                 {
@@ -40,7 +98,16 @@
                 }
               ]
             },
-            "/adjustment_catalogue/disregards/items/all": {
+            "/adjustment_catalogue/discounts/items[id=job-related-second-home]": {
+              "hash_at_generation": "sha256:f2a3b4c6d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a4",
+              "pages": [
+                {
+                  "url": "/council-tax-2/second-home/",
+                  "role": "supporting"
+                }
+              ]
+            },
+            "/adjustment_catalogue/discounts/items": {
               "hash_at_generation": "sha256:d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6",
               "pages": [
                 {
@@ -49,25 +116,48 @@
                 }
               ]
             },
-            "/adjustment_catalogue/exemptions/items/student_household": {
+            "/operational_facts/payment/payment_flexibility": {
+              "hash_at_generation": "sha256:g6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7",
+              "pages": [
+                {
+                  "url": "/council-tax-2/struggling-to-pay/",
+                  "role": "supporting"
+                }
+              ]
+            },
+            "/operational_facts/enforcement": {
+              "hash_at_generation": "sha256:h7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8",
+              "pages": [
+                {
+                  "url": "/council-tax-2/struggling-to-pay/",
+                  "role": "supporting"
+                }
+              ]
+            },
+            "/adjustment_catalogue/exemptions/items[id=class-n]": {
               "hash_at_generation": "sha256:f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2",
               "pages": [
                 {
                   "url": "/council-tax-2/occupants/students-in-your-home/",
                   "role": "primary"
-                },
-                {
-                  "url": "/council-tax/discounts/students/",
-                  "role": "primary"
                 }
               ]
             },
-            "/charge_schedule/annual_rates/2026_27": {
-              "hash_at_generation": "sha256:a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2",
+            "/adjustment_catalogue/discounts/items[id=full-time-students]": {
+              "hash_at_generation": "sha256:f1a2b3c5d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a3",
+              "pages": [
+                {
+                  "url": "/council-tax-2/occupants/students-in-your-home/",
+                  "role": "supporting"
+                }
+              ]
+            },
+            "/charge_schedule/valuation_and_charging/valuation_bands/valuation_ranges_1991": {
+              "hash_at_generation": "sha256:a1b2c3d5e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b3",
               "pages": [
                 {
                   "url": "/council-tax-2/your-bill/",
-                  "role": "primary"
+                  "role": "supporting"
                 }
               ]
             },
@@ -97,21 +187,57 @@
                   "role": "primary"
                 }
               ]
+            },
+            "/adjustment_catalogue/discounts/items/0": {
+              "hash_at_generation": "sha256:8311bd2784917185589bec55fe31a26e44a81f0b9fe33b91c951a5a63bee6462",
+              "pages": [
+                {
+                  "url": "/council-tax/discounts/single-person/",
+                  "role": "primary"
+                }
+              ]
+            },
+            "/adjustment_catalogue/exemptions/items/student_household": {
+              "hash_at_generation": "sha256:f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2",
+              "pages": [
+                {
+                  "url": "/council-tax/discounts/students/",
+                  "role": "primary"
+                }
+              ]
             }
           }
         },
         "rules": {
-          "version": "2.2",
+          "version": "2.5",
           "records": {
-            "/executable_rule_slices/rules[rule_id=rule.premium.long_term_empty]": {
+            "/executable_rule_slices/rules[rule_id=rule.discount.care_leaver]": {
+              "hash_at_generation": "sha256:c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3",
+              "pages": [
+                {
+                  "url": "/council-tax-2/care-leavers/",
+                  "role": "implementing_logic"
+                }
+              ]
+            },
+            "/executable_rule_slices/rules[rule_id=rule.reduction.disabled_band]": {
+              "hash_at_generation": "sha256:b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7",
+              "pages": [
+                {
+                  "url": "/council-tax-2/disabled-band-reduction/",
+                  "role": "implementing_logic"
+                },
+                {
+                  "url": "/council-tax/discounts/disabled/",
+                  "role": "implementing_logic"
+                }
+              ]
+            },
+            "/executable_rule_slices/rules[rule_id=rule.premium.empty_property_long_term]": {
               "hash_at_generation": "sha256:f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3",
               "pages": [
                 {
                   "url": "/council-tax-2/empty-home/",
-                  "role": "implementing_logic"
-                },
-                {
-                  "url": "/council-tax/discounts/empty-properties/",
                   "role": "implementing_logic"
                 }
               ]
@@ -124,25 +250,17 @@
                   "role": "implementing_logic"
                 },
                 {
-                  "url": "/council-tax-2/occupants/students-in-your-home/",
-                  "role": "cross_reference"
-                },
-                {
                   "url": "/council-tax/discounts/single-person/",
                   "role": "implementing_logic"
                 }
               ]
             },
-            "/rule_sets/adjustment_rules[rule_id=full-time-students]": {
-              "hash_at_generation": "sha256:b2c3d4e5f67890abcdef1234567890abcdef1234567890abcdef1234567890ab",
+            "/executable_rule_slices/rules[rule_id=rule.liability.hierarchy]": {
+              "hash_at_generation": "sha256:d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4",
               "pages": [
                 {
-                  "url": "/council-tax-2/occupants/living-alone/",
-                  "role": "cross_reference"
-                },
-                {
-                  "url": "/council-tax/discounts/single-person/",
-                  "role": "cross_reference"
+                  "url": "/council-tax-2/moving/",
+                  "role": "implementing_logic"
                 }
               ]
             },
@@ -155,51 +273,66 @@
                 }
               ]
             },
-            "/rule_sets/disregard_rules[rule_id=severe-mental-impairment]": {
+            "/executable_rule_slices/rules[rule_id=rule.discount.smi_household]": {
               "hash_at_generation": "sha256:b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7",
               "pages": [
                 {
                   "url": "/council-tax-2/occupants/someone-doesnt-count/",
                   "role": "implementing_logic"
-                },
+                }
+              ]
+            },
+            "/executable_rule_slices/rules[rule_id=rule.disregard.student.full_time]": {
+              "hash_at_generation": "sha256:b2c3d4e5f67890abcdef1234567890abcdef1234567890abcdef1234567890ab",
+              "pages": [
+                {
+                  "url": "/council-tax-2/occupants/someone-doesnt-count/",
+                  "role": "cross_reference"
+                }
+              ]
+            },
+            "/executable_rule_slices/rules[rule_id=rule.payment.special_arrangement.primary_intervention]": {
+              "hash_at_generation": "sha256:i8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9",
+              "pages": [
+                {
+                  "url": "/council-tax-2/struggling-to-pay/",
+                  "role": "implementing_logic"
+                }
+              ]
+            },
+            "/executable_rule_slices/rules[rule_id=rule.exemption.student.all_residents]": {
+              "hash_at_generation": "sha256:d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4",
+              "pages": [
+                {
+                  "url": "/council-tax-2/occupants/students-in-your-home/",
+                  "role": "implementing_logic"
+                }
+              ]
+            },
+            "/executable_rule_slices/rules[rule_id=rule.premium.long_term_empty]": {
+              "hash_at_generation": "sha256:f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3",
+              "pages": [
+                {
+                  "url": "/council-tax/discounts/empty-properties/",
+                  "role": "implementing_logic"
+                }
+              ]
+            },
+            "/rule_sets/disregard_rules[rule_id=severe-mental-impairment]": {
+              "hash_at_generation": "sha256:b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7",
+              "pages": [
                 {
                   "url": "/council-tax/discounts/mental-impairment/",
                   "role": "implementing_logic"
                 }
               ]
             },
-            "/rule_sets/disregard_rules[rule_id=full-time-students]": {
+            "/rule_sets/adjustment_rules[rule_id=full-time-students]": {
               "hash_at_generation": "sha256:b2c3d4e5f67890abcdef1234567890abcdef1234567890abcdef1234567890ab",
               "pages": [
                 {
-                  "url": "/council-tax-2/occupants/someone-doesnt-count/",
+                  "url": "/council-tax/discounts/single-person/",
                   "role": "cross_reference"
-                },
-                {
-                  "url": "/council-tax-2/occupants/students-in-your-home/",
-                  "role": "implementing_logic"
-                },
-                {
-                  "url": "/council-tax/discounts/students/",
-                  "role": "cross_reference"
-                }
-              ]
-            },
-            "/executable_rule_slices/rules[rule_id=rule.band.multiplier]": {
-              "hash_at_generation": "sha256:b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3",
-              "pages": [
-                {
-                  "url": "/council-tax-2/your-bill/",
-                  "role": "implementing_logic"
-                }
-              ]
-            },
-            "/executable_rule_slices/rules[rule_id=rule.reduction.disabled_band]": {
-              "hash_at_generation": "sha256:e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4",
-              "pages": [
-                {
-                  "url": "/council-tax/discounts/disabled/",
-                  "role": "implementing_logic"
                 }
               ]
             },
@@ -211,11 +344,139 @@
                   "role": "implementing_logic"
                 }
               ]
+            },
+            "/rule_sets/disregard_rules[rule_id=full-time-students]": {
+              "hash_at_generation": "sha256:b2c3d4e5f67890abcdef1234567890abcdef1234567890abcdef1234567890ab",
+              "pages": [
+                {
+                  "url": "/council-tax/discounts/students/",
+                  "role": "cross_reference"
+                }
+              ]
+            }
+          }
+        },
+        "results": {
+          "version": "2.5",
+          "records": {
+            "/publication_control/section_statuses/discounts": {
+              "hash_at_generation": "sha256:d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4",
+              "pages": [
+                {
+                  "url": "/council-tax-2/care-leavers/",
+                  "role": "publication_state"
+                },
+                {
+                  "url": "/council-tax-2/disabled-band-reduction/",
+                  "role": "publication_state"
+                },
+                {
+                  "url": "/council-tax-2/occupants/living-alone/",
+                  "role": "publication_state"
+                },
+                {
+                  "url": "/council-tax-2/occupants/someone-doesnt-count/",
+                  "role": "publication_state"
+                },
+                {
+                  "url": "/council-tax/discounts/single-person/",
+                  "role": "publication_state"
+                }
+              ]
+            },
+            "/publication_control/section_statuses/council_tax_support": {
+              "hash_at_generation": "sha256:k0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1",
+              "pages": [
+                {
+                  "url": "/council-tax-2/council-tax-support/",
+                  "role": "publication_state"
+                }
+              ]
+            },
+            "/publication_control/section_statuses/property_premiums": {
+              "hash_at_generation": "sha256:c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0",
+              "pages": [
+                {
+                  "url": "/council-tax-2/empty-home/",
+                  "role": "publication_state"
+                },
+                {
+                  "url": "/council-tax-2/second-home/",
+                  "role": "publication_state"
+                }
+              ]
+            },
+            "/publication_control/section_statuses/liability": {
+              "hash_at_generation": "sha256:e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5",
+              "pages": [
+                {
+                  "url": "/council-tax-2/moving/",
+                  "role": "publication_state"
+                }
+              ]
+            },
+            "/publication_control/section_statuses/payment": {
+              "hash_at_generation": "sha256:j9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0",
+              "pages": [
+                {
+                  "url": "/council-tax-2/struggling-to-pay/",
+                  "role": "publication_state"
+                }
+              ]
+            },
+            "/publication_control/section_statuses/exemptions": {
+              "hash_at_generation": "sha256:d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5",
+              "pages": [
+                {
+                  "url": "/council-tax-2/occupants/students-in-your-home/",
+                  "role": "publication_state"
+                },
+                {
+                  "url": "/council-tax/discounts/students/",
+                  "role": "publication_state"
+                }
+              ]
+            },
+            "/charge_schedule/valuation_and_charging": {
+              "hash_at_generation": "sha256:d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5",
+              "pages": [
+                {
+                  "url": "/council-tax-2/your-bill/",
+                  "role": "publication_state"
+                }
+              ]
+            },
+            "/publication_control/section_statuses/reductions": {
+              "hash_at_generation": "sha256:b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1",
+              "pages": [
+                {
+                  "url": "/council-tax/discounts/disabled/",
+                  "role": "publication_state"
+                }
+              ]
+            },
+            "/publication_control/section_statuses/premiums_and_discounts": {
+              "hash_at_generation": "sha256:c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0",
+              "pages": [
+                {
+                  "url": "/council-tax/discounts/empty-properties/",
+                  "role": "publication_state"
+                }
+              ]
+            },
+            "/publication_control/section_statuses/disregards": {
+              "hash_at_generation": "sha256:e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4",
+              "pages": [
+                {
+                  "url": "/council-tax/discounts/mental-impairment/",
+                  "role": "publication_state"
+                }
+              ]
             }
           }
         },
         "taxonomy": {
-          "version": "2.2",
+          "version": "2.5",
           "records": {
             "/mechanisms[id=premium]": {
               "hash_at_generation": "sha256:a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2",
@@ -239,6 +500,10 @@
               "pages": [
                 {
                   "url": "/council-tax-2/occupants/living-alone/",
+                  "role": "vocabulary"
+                },
+                {
+                  "url": "/council-tax-2/your-bill/",
                   "role": "vocabulary"
                 },
                 {
@@ -273,105 +538,12 @@
                 }
               ]
             },
-            "/charge_components/precepts": {
-              "hash_at_generation": "sha256:c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4",
-              "pages": [
-                {
-                  "url": "/council-tax-2/your-bill/",
-                  "role": "vocabulary"
-                }
-              ]
-            },
             "/mechanisms[id=band_reduction]": {
               "hash_at_generation": "sha256:f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5",
               "pages": [
                 {
                   "url": "/council-tax/discounts/disabled/",
                   "role": "vocabulary"
-                }
-              ]
-            }
-          }
-        },
-        "results": {
-          "version": "2.2",
-          "records": {
-            "/publication_control/section_statuses/empty_property": {
-              "hash_at_generation": "sha256:c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0",
-              "pages": [
-                {
-                  "url": "/council-tax-2/empty-home/",
-                  "role": "publication_state"
-                }
-              ]
-            },
-            "/publication_control/section_statuses/discounts": {
-              "hash_at_generation": "sha256:c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0",
-              "pages": [
-                {
-                  "url": "/council-tax-2/occupants/living-alone/",
-                  "role": "publication_state"
-                },
-                {
-                  "url": "/council-tax/discounts/single-person/",
-                  "role": "publication_state"
-                }
-              ]
-            },
-            "/publication_control/section_statuses/premiums_and_discounts": {
-              "hash_at_generation": "sha256:c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0",
-              "pages": [
-                {
-                  "url": "/council-tax-2/second-home/",
-                  "role": "publication_state"
-                },
-                {
-                  "url": "/council-tax/discounts/empty-properties/",
-                  "role": "publication_state"
-                }
-              ]
-            },
-            "/publication_control/section_statuses/disregards": {
-              "hash_at_generation": "sha256:e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4",
-              "pages": [
-                {
-                  "url": "/council-tax-2/occupants/someone-doesnt-count/",
-                  "role": "publication_state"
-                },
-                {
-                  "url": "/council-tax/discounts/mental-impairment/",
-                  "role": "publication_state"
-                }
-              ]
-            },
-            "/publication_control/section_statuses/exemptions": {
-              "hash_at_generation": "sha256:d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5",
-              "pages": [
-                {
-                  "url": "/council-tax-2/occupants/students-in-your-home/",
-                  "role": "publication_state"
-                },
-                {
-                  "url": "/council-tax/discounts/students/",
-                  "role": "publication_state"
-                }
-              ]
-            },
-            "/publication_control/section_statuses/charge_schedule": {
-              "hash_at_generation": "sha256:d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5",
-              "pages": [
-                {
-                  "url": "/council-tax-2/your-bill/",
-                  "role": "publication_state"
-                }
-              ]
-            },
-            "/publication_control/section_statuses/reductions": {
-              "hash_at_generation": "sha256:b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1",
-              "pages": [
-                {
-                  "url": "/council-tax/discounts/disabled/",
-                  "role": "publication_state"
                 }
               ]
             }
