@@ -13,10 +13,10 @@ summary: >
 description: >
   Council Tax discounts based on who lives at your address in Gloucester.
   Living alone saves 25%. Students and people in certain circumstances are
-  disregarded, potentially reducing your bill further.
+  disregarded, potentially reducing your bill to nothing.
 canonical: https://www.gloucester.gov.uk/council-tax/occupants/
 schema_type: GovernmentService
-dateModified: "2026-04-15"
+dateModified: "2026-04-18"
 
 breadcrumb:
   - url: /council-tax-2/
@@ -55,8 +55,9 @@ cards:
     href: /council-tax-2/occupants/someone-doesnt-count/
     summary: >
       Some people — including those with a severe mental impairment,
-      carers, under-18s, and others — are disregarded when counting
-      adults. This may reduce your bill even if you are not living alone.
+      unpaid carers, under-18s, and others — are disregarded when
+      counting adults. This may reduce your bill even if you are not
+      living alone.
 
 tags:
   - gcc

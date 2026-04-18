@@ -2,7 +2,7 @@
 layout: gcc/landing-page.njk
 permalink: /council-tax-2/
 title: Council Tax — your guide
-eyebrow: Council Tax (property & people approach)
+eyebrow: Council Tax 2026/27
 summary: >
   Council Tax explained around two questions: what is your property
   situation, and who lives there? Find the section that matches your
@@ -10,13 +10,13 @@ summary: >
 
 # ── AI/SEO signal fields ──
 description: >
-  Official Gloucester City Council guide to Council Tax for Gloucester
-  residents. Covers valuation bands A to H, the 25% single person
-  discount, student exemptions, empty property rules, and second home
-  charges.
+  Official Gloucester City Council guide to Council Tax for 2026/27.
+  Band D charge £2,348.17. Covers valuation bands A to H, the 25%
+  single person discount, student exemptions, empty property rules,
+  and second home charges.
 canonical: https://www.gloucester.gov.uk/council-tax/
 schema_type: GovernmentService
-dateModified: "2026-04-15"
+dateModified: "2026-04-18"
 
 breadcrumb: []
 
@@ -27,11 +27,11 @@ actions:
     href: /council-tax-2/occupants/
 
 stats:
-  - value: "8"
-    label: valuation bands, A to H
+  - value: "£2,348.17"
+    label: Band D annual charge 2026/27
   - value: "25%"
-    label: off if you live alone
-  - value: "0%"
+    label: off if you are the only adult at home
+  - value: "£0"
     label: if everyone at home is a full-time student
 
 cards_heading: Where do you want to start?
@@ -41,7 +41,7 @@ cards:
     href: /council-tax-2/your-bill/
     summary: >
       What your annual charge is, how it is split between Gloucester City
-      Council, the county, police, fire, and — if you are in Quedgeley — the
+      Council, the county, police, and — if you are in Quedgeley — the
       parish. Plus how to find and challenge your band.
   - title: Discounts based on who lives with you
     href: /council-tax-2/occupants/
